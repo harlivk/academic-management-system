@@ -1,0 +1,132 @@
+
+.page-heading {
+    color: #49352E;
+    font-weight: 700;
+}
+
+.page-subtitle {
+    color: #8A766A;
+}
+
+.summary-card {
+    background: #EADDD5;
+    border: none;
+    border-radius: 16px;
+    padding: 22px;
+    height: 100%;
+}
+
+.summary-icon {
+    font-size: 25px;
+    color: #A18B7B;
+}
+
+.summary-number {
+    color: #49352E;
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.summary-label {
+    color: #806D62;
+    font-size: 14px;
+}
+
+.assignment-card {
+    background: #fff;
+    border: 1px solid #EADDD5;
+    border-radius: 16px;
+    padding: 22px;
+    height: 100%;
+    transition: 0.2s ease;
+}
+
+.assignment-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(73, 53, 46, 0.08);
+}
+
+.assignment-icon {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F7F1E8;
+    color: #A18B7B;
+    border-radius: 12px;
+    font-size: 21px;
+}
+
+.assignment-title {
+    color: #49352E;
+    font-weight: 700;
+}
+
+.assignment-detail {
+    color: #806D62;
+    font-size: 13px;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-active {
+    background: #E5F1E8;
+    color: #39734A;
+}
+
+.status-closed {
+    background: #F0E8E3;
+    color: #806D62;
+}
+
+.status-draft {
+    background: #FFF1D9;
+    color: #936B24;
+}
+
+.custom-input {
+    border: 1px solid #EADDD5;
+    border-radius: 10px;
+    padding: 11px 14px;
+}
+
+.custom-input:focus {
+    border-color: #C98F91;
+    box-shadow: 0 0 0 0.2rem rgba(201, 143, 145, 0.15);
+}
+
+.btn-create {
+    background: #C98F91;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 11px 18px;
+    font-weight: 600;
+}
+
+.btn-create:hover {
+    background: #B77B7E;
+    color: white;
+}
+
+.section-heading {
+    color: #49352E;
+    font-weight: 700;
+}
+
+.empty-message {
+    display: none;
+    color: #8A766A;
+    text-align: center;
+    padding: 35px;
+    background: #fff;
+    border-radius: 14px;
+    border: 1px dashed #D8C5BA;
+}

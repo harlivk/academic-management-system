@@ -1,0 +1,142 @@
+
+.login-wrapper {
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 15px;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 450px;
+    background-color: var(--blush-oat);
+    border: 1px solid var(--dusty-rose);
+    border-radius: 20px;
+    padding: 38px;
+    box-shadow: 0 8px 25px rgba(73, 53, 46, 0.07);
+}
+
+.login-icon {
+    width: 70px;
+    height: 70px;
+    background-color: var(--milk);
+    color: var(--dusty-rose);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    margin: 0 auto 18px;
+}
+
+.login-title {
+    color: var(--espresso);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.login-subtitle {
+    color: var(--cocoa-taupe);
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 28px;
+}
+
+.form-label {
+    color: var(--espresso);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.form-control {
+    background-color: var(--milk);
+    border: 1px solid var(--cocoa-taupe);
+    border-radius: 9px;
+    padding: 11px 12px;
+}
+
+.form-control:focus {
+    border-color: var(--dusty-rose);
+    box-shadow: 0 0 0 0.2rem rgba(201, 143, 145, 0.18);
+}
+
+.form-check-input:checked {
+    background-color: var(--dusty-rose);
+    border-color: var(--dusty-rose);
+}
+
+.forgot-link,
+.register-link {
+    color: var(--cocoa-taupe);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.forgot-link:hover,
+.register-link:hover {
+    color: var(--espresso);
+    text-decoration: underline;
+}
+
+.login-btn {
+    width: 100%;
+    background-color: var(--dusty-rose);
+    color: white;
+    border: none;
+    border-radius: 9px;
+    padding: 12px;
+    font-weight: 600;
+    margin-top: 22px;
+}
+
+.login-btn:hover {
+    background-color: #B77C7F;
+    color: white;
+}
+
+.register-text {
+    color: var(--espresso);
+    text-align: center;
+    margin-top: 24px;
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: var(--cocoa-taupe);
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.back-link:hover {
+    color: var(--espresso);
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper .form-control {
+    padding-right: 45px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    color: var(--cocoa-taupe);
+}
+
+@media (max-width: 480px) {
+    .login-card {
+        padding: 26px 20px;
+    }
+}

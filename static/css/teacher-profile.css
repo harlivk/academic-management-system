@@ -1,0 +1,147 @@
+body {
+    background: #F7F1E8;
+}
+
+.profile-container {
+    max-width: 1050px;
+    margin: 25px auto;
+}
+
+.profile-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.page-title {
+    color: #49352E;
+    font-size: 27px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.page-subtitle {
+    color: #A18B7B;
+    font-size: 14px;
+}
+
+.back-btn {
+    color: #49352E;
+    text-decoration: none;
+    border: 1px solid #C98F91;
+    padding: 9px 15px;
+    border-radius: 9px;
+    font-size: 13px;
+}
+
+.back-btn:hover {
+    background: #C98F91;
+    color: white;
+}
+
+.profile-header {
+    background: #EADDD5;
+    border-radius: 18px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 22px;
+}
+
+.profile-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: #C98F91;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
+    flex-shrink: 0;
+}
+
+.profile-name {
+    color: #49352E;
+    font-size: 23px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.profile-role {
+    color: #A18B7B;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.status-badge {
+    display: inline-block;
+    background: white;
+    color: #49352E;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.profile-section {
+    background: white;
+    border: 1px solid #EADDD5;
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.section-heading {
+    color: #49352E;
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 22px;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+.detail-label {
+    color: #A18B7B;
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+
+.detail-value {
+    color: #49352E;
+    font-size: 15px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.profile-note {
+    background: #F7F1E8;
+    border-radius: 10px;
+    padding: 14px;
+    color: #A18B7B;
+    font-size: 13px;
+    margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+    .profile-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-topbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

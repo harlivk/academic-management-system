@@ -1,0 +1,103 @@
+.notices-page {
+    padding: 25px 0 45px;
+}
+
+.page-heading {
+    color: #49352E;
+    font-weight: 700;
+}
+
+.page-subtitle {
+    color: #A18B7B;
+}
+
+.notice-summary {
+    background: #EADDD5;
+    border-radius: 15px;
+    padding: 22px;
+    height: 100%;
+}
+
+.notice-summary h6 {
+    color: #806C60;
+    font-size: 13px;
+}
+
+.notice-summary h3 {
+    color: #49352E;
+    font-weight: 700;
+    margin: 0;
+}
+
+.notice-card {
+    background: #fff;
+    border: 1px solid #EADDD5;
+    border-radius: 15px;
+    padding: 22px;
+    margin-bottom: 15px;
+    transition: 0.2s;
+}
+
+.notice-card:hover {
+    box-shadow: 0 5px 15px rgba(73, 53, 46, 0.08);
+    transform: translateY(-2px);
+}
+
+.notice-card h5 {
+    color: #49352E;
+    font-weight: 700;
+}
+
+.notice-card p {
+    color: #806C60;
+    font-size: 14px;
+}
+
+.notice-date {
+    color: #A18B7B;
+    font-size: 12px;
+}
+
+.category-badge {
+    display: inline-block;
+    background: #EADDD5;
+    color: #49352E;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.priority-badge {
+    background: #F7E5E3;
+    color: #A45F63;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.filter-select {
+    border: 1px solid #EADDD5;
+    border-radius: 9px;
+    padding: 10px 14px;
+    color: #49352E;
+    background: white;
+}
+
+.dashboard-link {
+    color: #A18B7B;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.dashboard-link:hover {
+    color: #49352E;
+}
+
+.empty-message {
+    display: none;
+    text-align: center;
+    color: #A18B7B;
+    padding: 30px;
+}

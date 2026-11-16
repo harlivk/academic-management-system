@@ -1,0 +1,119 @@
+
+.login-wrapper {
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 15px;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 450px;
+    background: white;
+    padding: 38px;
+    border-radius: 18px;
+    border: 1px solid var(--blush-oat);
+    box-shadow: 0 8px 25px rgba(73, 53, 46, 0.07);
+}
+
+.login-icon {
+    width: 65px;
+    height: 65px;
+    background: var(--blush-oat);
+    color: var(--espresso);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin: 0 auto 18px;
+}
+
+.login-title {
+    color: var(--espresso);
+    font-weight: 700;
+    text-align: center;
+}
+
+.login-subtitle {
+    color: var(--cocoa-taupe);
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 28px;
+}
+
+.form-label {
+    color: var(--espresso);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-control {
+    border: 1px solid var(--blush-oat);
+    border-radius: 8px;
+    padding: 11px 13px;
+}
+
+.form-control:focus {
+    border-color: var(--dusty-rose);
+    box-shadow: 0 0 0 0.2rem rgba(201, 143, 145, 0.15);
+}
+
+.login-btn {
+    width: 100%;
+    background: var(--dusty-rose);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-weight: 600;
+}
+
+.login-btn:hover {
+    background: #B77C7F;
+    color: white;
+}
+
+.login-links {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.login-links a {
+    color: var(--dusty-rose);
+    font-weight: 600;
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper .form-control {
+    padding-right: 45px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    color: var(--cocoa-taupe);
+}
+
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 22px;
+    color: var(--cocoa-taupe);
+    font-size: 13px;
+}
+
+@media (max-width: 480px) {
+    .login-card {
+        padding: 25px 20px;
+    }
+}

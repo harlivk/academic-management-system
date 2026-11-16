@@ -1,0 +1,390 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Student Dashboard | Academic Management System{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/student-dashboard.css' %}">
+
+<style>
+    /* Upcoming Classes */
+    .upcoming-classes-section {
+        margin-top: 30px;
+    }
+
+    .upcoming-classes-card {
+        background: #FFFFFF;
+        border: 1px solid #EADDD5;
+        border-radius: 14px;
+        padding: 22px;
+        box-shadow: 0 4px 15px rgba(73, 53, 46, 0.05);
+    }
+
+    .upcoming-classes-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 18px;
+    }
+
+    .upcoming-classes-header h3 {
+        color: #49352E;
+        font-size: 19px;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .view-timetable-link {
+        color: #B77C7F;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .view-timetable-link:hover {
+        color: #49352E;
+    }
+
+    .student-schedule-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 650px;
+    }
+
+    .student-schedule-table th {
+        background: #F7F1E8;
+        color: #49352E;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 13px 14px;
+        text-align: left;
+        white-space: nowrap;
+    }
+
+    .student-schedule-table td {
+        color: #6F5B50;
+        font-size: 13px;
+        padding: 14px;
+        border-bottom: 1px solid #EADDD5;
+    }
+
+    .student-schedule-table tr:last-child td {
+        border-bottom: none;
+    }
+
+    .student-schedule-table td:first-child {
+        color: #49352E;
+        font-weight: 600;
+    }
+
+    .schedule-table-wrapper {
+        overflow-x: auto;
+    }
+
+    .student-empty-schedule {
+        text-align: center;
+        padding: 35px 15px;
+    }
+
+    .student-empty-schedule i {
+        color: #C98F91;
+        font-size: 34px;
+        display: block;
+        margin-bottom: 12px;
+    }
+
+    .student-empty-schedule h4 {
+        color: #49352E;
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 7px;
+    }
+
+    .student-empty-schedule p {
+        color: #A18B7B;
+        font-size: 13px;
+        margin: 0;
+    }
+
+    .schedule-section-note {
+        color: #A18B7B;
+        font-size: 12px;
+        margin-top: 14px;
+        margin-bottom: 0;
+    }
+
+    @media (max-width: 576px) {
+        .upcoming-classes-card {
+            padding: 16px;
+        }
+
+        .upcoming-classes-header h3 {
+            font-size: 17px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block navbar %}{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-wrapper">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="sidebar-title">Student Portal</div>
+        <div class="sidebar-subtitle">Academic Management System</div>
+
+        <a href="{% url 'student_dashboard' %}" class="active">
+            <i class="bi bi-grid-fill"></i> Dashboard
+        </a>
+
+        <a href="{% url 'student_profile' %}">
+            <i class="bi bi-person-circle"></i> My Profile
+        </a>
+
+        <a href="{% url 'student_timetable' %}">
+            <i class="bi bi-calendar-week"></i> My Timetable
+        </a>
+
+        <a href="{% url 'student_attendance' %}">
+            <i class="bi bi-calendar-check"></i> My Attendance
+        </a>
+
+        <a href="{% url 'student_assignments' %}">
+            <i class="bi bi-journal-text"></i> Assignments
+        </a>
+
+        <a href="{% url 'student_marks' %}">
+            <i class="bi bi-bar-chart"></i> Marks & Results
+        </a>
+
+        <a href="{% url 'student_notices' %}">
+            <i class="bi bi-megaphone"></i> Notice Board
+        </a>
+
+        <a href="{% url 'student_materials' %}">
+            <i class="bi bi-folder"></i> Study Materials
+        </a>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <div class="topbar">
+
+            <div>
+                <h1 class="welcome-title">Welcome, Student!</h1>
+                <p class="welcome-subtitle">
+                    Here's an overview of your academic activities.
+                </p>
+            </div>
+
+            <div class="d-flex align-items-center gap-3 flex-wrap">
+
+                <span class="portal-badge">
+                    <i class="bi bi-mortarboard-fill"></i>
+                    Student Portal
+                </span>
+
+                <a href="{% url 'student_login' %}" class="logout-link">
+                    <i class="bi bi-box-arrow-right"></i>
+                    Logout
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- ACADEMIC OVERVIEW -->
+        <h2 class="section-heading">Academic Overview</h2>
+
+        <div class="overview-grid">
+
+            <div class="overview-card">
+                <div class="overview-icon">
+                    <i class="bi bi-calendar-check"></i>
+                </div>
+                <h3>--</h3>
+                <p>Attendance</p>
+            </div>
+
+            <div class="overview-card">
+                <div class="overview-icon">
+                    <i class="bi bi-award"></i>
+                </div>
+                <h3>--</h3>
+                <p>Current CGPA</p>
+            </div>
+
+            <div class="overview-card">
+                <div class="overview-icon">
+                    <i class="bi bi-journal-text"></i>
+                </div>
+                <h3>--</h3>
+                <p>Pending Assignments</p>
+            </div>
+
+            <div class="overview-card">
+                <div class="overview-icon">
+                    <i class="bi bi-clock"></i>
+                </div>
+                <h3>--</h3>
+                <p>Upcoming Classes</p>
+            </div>
+
+        </div>
+
+        <!-- MY UPCOMING CLASSES -->
+        <section class="upcoming-classes-section">
+
+            <div class="upcoming-classes-card">
+
+                <div class="upcoming-classes-header">
+
+                    <div>
+                        <h3>
+                            <i class="bi bi-calendar-week me-2"
+                               style="color: #C98F91;"></i>
+                            My Upcoming Classes
+                        </h3>
+                    </div>
+
+                    <a href="{% url 'student_timetable' %}"
+                       class="view-timetable-link">
+                        View Full Timetable
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+
+                </div>
+
+                {% if upcoming_classes %}
+
+                    <div class="schedule-table-wrapper">
+
+                        <table class="student-schedule-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Faculty</th>
+                                    <th>Day / Date</th>
+                                    <th>Time</th>
+                                    <th>Classroom</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                {% for item in upcoming_classes %}
+
+                                    <tr>
+                                        <td>{{ item.subject }}</td>
+                                        <td>{{ item.teacher }}</td>
+                                        <td>{{ item.day }}</td>
+                                        <td>{{ item.time }}</td>
+                                        <td>{{ item.room }}</td>
+                                    </tr>
+
+                                {% endfor %}
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                {% else %}
+
+                    <div class="student-empty-schedule">
+
+                        <i class="bi bi-calendar2-x"></i>
+
+                        <h4>No Upcoming Classes</h4>
+
+                        <p>
+                            Your section's timetable will appear here
+                            once it has been published by the
+                            Admin/Timetable Coordinator.
+                        </p>
+
+                    </div>
+
+                {% endif %}
+
+                <p class="schedule-section-note">
+                    <i class="bi bi-info-circle me-1"></i>
+                    Only classes assigned to your section and approved
+                    timetable changes will be displayed.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- STUDENT WORKSPACE -->
+        <h2 class="section-heading">My Academic Workspace</h2>
+
+        <div class="modules-grid">
+
+            <a href="{% url 'student_timetable' %}" class="module-card">
+                <div class="module-icon">
+                    <i class="bi bi-calendar-week"></i>
+                </div>
+                <h5>My Timetable</h5>
+                <p>View your weekly class schedule.</p>
+            </a>
+
+            <a href="{% url 'student_attendance' %}" class="module-card">
+                <div class="module-icon">
+                    <i class="bi bi-calendar-check"></i>
+                </div>
+                <h5>My Attendance</h5>
+                <p>Track your attendance records.</p>
+            </a>
+
+            <a href="{% url 'student_assignments' %}" class="module-card">
+                <div class="module-icon">
+                    <i class="bi bi-journal-text"></i>
+                </div>
+                <h5>Assignments</h5>
+                <p>View pending and submitted assignments.</p>
+            </a>
+
+            <a href="{% url 'student_marks' %}" class="module-card">
+                <div class="module-icon">
+                    <i class="bi bi-bar-chart"></i>
+                </div>
+                <h5>My Results</h5>
+                <p>Check your marks and academic performance.</p>
+            </a>
+
+            <a href="{% url 'student_materials' %}" class="module-card">
+                <div class="module-icon">
+                    <i class="bi bi-folder"></i>
+                </div>
+                <h5>Study Materials</h5>
+                <p>Access notes and learning resources.</p>
+            </a>
+
+            <a href="{% url 'student_notices' %}" class="module-card">
+                <div class="module-icon">
+                    <i class="bi bi-megaphone"></i>
+                </div>
+                <h5>Announcements</h5>
+                <p>Stay updated with important notices.</p>
+            </a>
+
+        </div>
+
+    </main>
+
+</div>
+
+{% endblock %}

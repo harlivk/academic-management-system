@@ -1,0 +1,88 @@
+
+.marks-page {
+    padding: 25px 0 45px;
+}
+
+.page-heading {
+    color: #49352E;
+    font-weight: 700;
+}
+
+.page-subtitle {
+    color: #A18B7B;
+}
+
+.summary-card {
+    background: #EADDD5;
+    border: none;
+    border-radius: 16px;
+    padding: 22px;
+    height: 100%;
+}
+
+.summary-card h6 {
+    color: #806C60;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.summary-card h3 {
+    color: #49352E;
+    font-weight: 700;
+    margin: 0;
+}
+
+.content-card {
+    background: #fff;
+    border: 1px solid #EADDD5;
+    border-radius: 16px;
+    padding: 24px;
+    margin-top: 25px;
+}
+
+.section-title {
+    color: #49352E;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.table thead th {
+    background: #F7F1E8;
+    color: #49352E;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.table td {
+    color: #66554D;
+    vertical-align: middle;
+}
+
+.result-badge {
+    background: #EADDD5;
+    color: #49352E;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.dashboard-link {
+    color: #A18B7B;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.dashboard-link:hover {
+    color: #49352E;
+}
+
+.notice {
+    background: #F7F1E8;
+    border-radius: 12px;
+    padding: 15px;
+    color: #806C60;
+    font-size: 13px;
+    margin-top: 20px;
+}
+

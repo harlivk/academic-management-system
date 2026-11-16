@@ -1,0 +1,183 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Assignments | Academic Management System{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/student-assignments.css' %}">
+{% endblock %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+
+<div class="assignments-container">
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div>
+            <h2>
+                <i class="bi bi-journal-text"></i>
+                Assignments
+            </h2>
+            <p>Manage your coursework and submission deadlines.</p>
+        </div>
+
+        <a href="/student/dashboard/" class="back-btn">
+            <i class="bi bi-arrow-left"></i> Dashboard
+        </a>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="row g-4">
+
+        <div class="col-md-6 col-lg-3">
+            <div class="summary-card">
+                <i class="bi bi-journal-bookmark"></i>
+                <h3>--</h3>
+                <p>Total Assignments</p>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="summary-card">
+                <i class="bi bi-hourglass-split"></i>
+                <h3>--</h3>
+                <p>Pending</p>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="summary-card">
+                <i class="bi bi-check-circle"></i>
+                <h3>--</h3>
+                <p>Submitted</p>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="summary-card">
+                <i class="bi bi-exclamation-circle"></i>
+                <h3>--</h3>
+                <p>Overdue</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Assignment List -->
+    <h4 class="section-title">My Assignments</h4>
+
+    <div class="content-card">
+
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-3">
+
+            <h5 style="color: var(--espresso); font-weight: 700;">
+                Assignment Overview
+            </h5>
+
+            <select class="filter-select" id="assignmentFilter">
+                <option value="all">All Assignments</option>
+                <option value="pending">Pending</option>
+                <option value="submitted">Submitted</option>
+                <option value="overdue">Overdue</option>
+            </select>
+
+        </div>
+
+        <!-- Assignment 1 -->
+        <div class="assignment-item" data-status="pending">
+
+            <div class="d-flex justify-content-between flex-wrap gap-3">
+
+                <div>
+                    <h5>Mathematics Assignment</h5>
+                    <p>Subject: Applied Mathematics</p>
+                    <p>Topic: Differential Calculus</p>
+                </div>
+
+                <div class="text-md-end">
+                    <span class="status pending">Pending</span>
+                    <p class="due-date mt-2">Due: --/--/----</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Assignment 2 -->
+        <div class="assignment-item" data-status="submitted">
+
+            <div class="d-flex justify-content-between flex-wrap gap-3">
+
+                <div>
+                    <h5>Physics Practical File</h5>
+                    <p>Subject: Applied Physics</p>
+                    <p>Topic: Laser Experiments</p>
+                </div>
+
+                <div class="text-md-end">
+                    <span class="status submitted">Submitted</span>
+                    <p class="due-date mt-2">Submitted: --/--/----</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Assignment 3 -->
+        <div class="assignment-item" data-status="pending">
+
+            <div class="d-flex justify-content-between flex-wrap gap-3">
+
+                <div>
+                    <h5>Chemistry Assignment</h5>
+                    <p>Subject: Applied Chemistry</p>
+                    <p>Topic: Engineering Materials</p>
+                </div>
+
+                <div class="text-md-end">
+                    <span class="status pending">Pending</span>
+                    <p class="due-date mt-2">Due: --/--/----</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Assignment 4 -->
+        <div class="assignment-item" data-status="overdue">
+
+            <div class="d-flex justify-content-between flex-wrap gap-3">
+
+                <div>
+                    <h5>Electrical Science Worksheet</h5>
+                    <p>Subject: Electrical Science</p>
+                    <p>Topic: Basic Electrical Circuits</p>
+                </div>
+
+                <div class="text-md-end">
+                    <span class="status overdue">Overdue</span>
+                    <p class="due-date mt-2">Due: --/--/----</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <p class="note">
+            Note: These are sample assignments for the frontend.
+            Actual assignments and deadlines will be fetched from the backend.
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/student-assignments.js' %}"></script>
+{% endblock %}

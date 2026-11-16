@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Study Materials | Academic Management System{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/student-materials.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container materials-page">
+
+    <!-- Heading -->
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+        <div>
+            <h2 class="page-heading">Study Materials</h2>
+            <p class="page-subtitle mb-0">
+                Access your subject notes, presentations and learning resources.
+            </p>
+        </div>
+
+        <a href="/student/dashboard/" class="dashboard-link">
+            <i class="bi bi-arrow-left"></i> Back to Dashboard
+        </a>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="row g-3 mb-4">
+
+        <div class="col-md-4">
+            <div class="summary-card">
+                <h6><i class="bi bi-folder2-open me-2"></i>Total Resources</h6>
+                <h3>06</h3>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="summary-card">
+                <h6><i class="bi bi-journal-bookmark me-2"></i>Subjects Covered</h6>
+                <h3>06</h3>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="summary-card">
+                <h6><i class="bi bi-file-earmark-pdf me-2"></i>PDF Resources</h6>
+                <h3>04</h3>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Search and Filter -->
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+
+        <h5 class="page-heading mb-0">Available Resources</h5>
+
+        <div class="d-flex flex-wrap gap-2">
+            <input
+                type="text"
+                id="materialSearch"
+                class="search-input"
+                placeholder="Search materials..."
+            >
+
+            <select
+                id="subjectFilter"
+                class="filter-select"
+            >
+                <option value="all">All Subjects</option>
+                <option value="mathematics">Mathematics</option>
+                <option value="physics">Physics</option>
+                <option value="chemistry">Chemistry</option>
+                <option value="electrical">Electrical Science</option>
+                <option value="manufacturing">Manufacturing Process</option>
+                <option value="communication">Communication Skills</option>
+            </select>
+        </div>
+
+    </div>
+
+    <!-- Materials -->
+    <div class="row g-3" id="materialsList">
+
+        <div class="col-lg-4 col-md-6 material-item" data-subject="mathematics">
+            <div class="material-card">
+                <div class="material-icon">
+                    <i class="bi bi-file-earmark-pdf"></i>
+                </div>
+                <span class="material-tag">Mathematics</span>
+                <h5 class="mt-3">Applied Mathematics Notes</h5>
+                <p>Subject notes and important mathematical concepts.</p>
+                <p><i class="bi bi-file-earmark me-1"></i> PDF Resource</p>
+                <a href="#" class="download-btn">
+                    <i class="bi bi-download me-1"></i> Download
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 material-item" data-subject="physics">
+            <div class="material-card">
+                <div class="material-icon">
+                    <i class="bi bi-file-earmark-pdf"></i>
+                </div>
+                <span class="material-tag">Physics</span>
+                <h5 class="mt-3">Applied Physics Notes</h5>
+                <p>Lecture notes covering important physics topics.</p>
+                <p><i class="bi bi-file-earmark me-1"></i> PDF Resource</p>
+                <a href="#" class="download-btn">
+                    <i class="bi bi-download me-1"></i> Download
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 material-item" data-subject="chemistry">
+            <div class="material-card">
+                <div class="material-icon">
+                    <i class="bi bi-file-earmark-pdf"></i>
+                </div>
+                <span class="material-tag">Chemistry</span>
+                <h5 class="mt-3">Engineering Chemistry Notes</h5>
+                <p>Study resources and important chemistry concepts.</p>
+                <p><i class="bi bi-file-earmark me-1"></i> PDF Resource</p>
+                <a href="#" class="download-btn">
+                    <i class="bi bi-download me-1"></i> Download
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 material-item" data-subject="electrical">
+            <div class="material-card">
+                <div class="material-icon">
+                    <i class="bi bi-file-earmark-pdf"></i>
+                </div>
+                <span class="material-tag">Electrical Science</span>
+                <h5 class="mt-3">Electrical Science Notes</h5>
+                <p>Important concepts, formulas and study material.</p>
+                <p><i class="bi bi-file-earmark me-1"></i> PDF Resource</p>
+                <a href="#" class="download-btn">
+                    <i class="bi bi-download me-1"></i> Download
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 material-item" data-subject="manufacturing">
+            <div class="material-card">
+                <div class="material-icon">
+                    <i class="bi bi-file-earmark-slides"></i>
+                </div>
+                <span class="material-tag">Manufacturing Process</span>
+                <h5 class="mt-3">Manufacturing Process Slides</h5>
+                <p>Presentation material covering manufacturing topics.</p>
+                <p><i class="bi bi-file-earmark-slides me-1"></i> PPT Resource</p>
+                <a href="#" class="download-btn">
+                    <i class="bi bi-download me-1"></i> Download
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 material-item" data-subject="communication">
+            <div class="material-card">
+                <div class="material-icon">
+                    <i class="bi bi-file-earmark-text"></i>
+                </div>
+                <span class="material-tag">Communication Skills</span>
+                <h5 class="mt-3">Communication Skills Notes</h5>
+                <p>Learning resources for communication and presentation skills.</p>
+                <p><i class="bi bi-file-earmark-text me-1"></i> Document</p>
+                <a href="#" class="download-btn">
+                    <i class="bi bi-download me-1"></i> Download
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Empty Message -->
+    <div class="empty-message" id="emptyMessage">
+        <i class="bi bi-search fs-2"></i>
+        <p class="mt-2">No study materials found.</p>
+    </div>
+
+    <!-- Information -->
+    <div class="summary-card mt-4">
+        <p class="mb-0" style="color:#806C60;font-size:13px;">
+            <i class="bi bi-info-circle me-2"></i>
+            These are sample resources. Actual files and downloadable links
+            will be uploaded and managed by teachers through the backend.
+        </p>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/student-materials.js' %}"></script>
+{% endblock %}

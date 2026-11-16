@@ -1,0 +1,177 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Student Registration | Academic Management System{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/student-register.css' %}">
+{% endblock %}
+
+{% block navbar %}
+<nav class="navbar">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <i class="bi bi-mortarboard-fill"></i>
+            Academic Management System
+        </a>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="register-container">
+
+    <div class="register-card">
+
+        <div class="register-icon">
+            <i class="bi bi-mortarboard-fill"></i>
+        </div>
+
+        <h2 class="register-title">Student Registration</h2>
+
+        <p class="register-subtitle">
+            Create your academic account
+        </p>
+
+        <form method="POST" action="#" id="studentRegisterForm">
+
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label class="form-label" for="enrollment_number">
+                    Enrollment Number
+                </label>
+
+                <input
+                    type="text"
+                    class="form-control"
+                    id="enrollment_number"
+                    name="enrollment_number"
+                    placeholder="Enter your enrollment number"
+                    autocomplete="off"
+                    required
+                >
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="email">
+                    College Email ID
+                </label>
+
+                <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your college email"
+                    autocomplete="email"
+                    required
+                >
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="section_code">
+                    Section Joining Code
+                </label>
+
+                <input
+                    type="text"
+                    class="form-control"
+                    id="section_code"
+                    name="section_code"
+                    placeholder="Enter the code provided by your teacher"
+                    required
+                >
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="password">
+                    Password
+                </label>
+
+                <div class="password-wrapper">
+                    <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        name="password"
+                        placeholder="Create a password"
+                        autocomplete="new-password"
+                        minlength="8"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="toggle-password"
+                        data-target="password"
+                        aria-label="Show password"
+                    >
+                        <i class="bi bi-eye"></i>
+                    </button>
+                </div>
+
+                <p class="password-note mt-1">
+                    Use a strong password with at least 8 characters.
+                </p>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="confirm_password">
+                    Confirm Password
+                </label>
+
+                <div class="password-wrapper">
+                    <input
+                        type="password"
+                        class="form-control"
+                        id="confirm_password"
+                        name="confirm_password"
+                        placeholder="Re-enter your password"
+                        autocomplete="new-password"
+                        minlength="8"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="toggle-password"
+                        data-target="confirm_password"
+                        aria-label="Show password"
+                    >
+                        <i class="bi bi-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <button type="submit" class="register-btn">
+                Create Student Account
+                <i class="bi bi-arrow-right ms-1"></i>
+            </button>
+
+        </form>
+
+        <p class="text-center mt-4 mb-2">
+            Already have an account?
+
+            <a href="{% url 'student_login' %}" class="login-link">
+                Login here
+            </a>
+        </p>
+
+        <p class="text-center mb-0">
+            <a href="/" class="login-link">
+                <i class="bi bi-arrow-left"></i>
+                Back to Home
+            </a>
+        </p>
+
+    </div>
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/student-register.js' %}"></script>
+{% endblock %}

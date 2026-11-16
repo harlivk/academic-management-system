@@ -1,0 +1,210 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}My Marks & Results | Academic Management System{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/student-marks.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container marks-page">
+
+    <!-- Page Header -->
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+        <div>
+            <h2 class="page-heading">My Marks & Results</h2>
+            <p class="page-subtitle mb-0">
+                View your examination performance and subject-wise results.
+            </p>
+        </div>
+
+        <a href="/student/dashboard/" class="dashboard-link">
+            <i class="bi bi-arrow-left"></i> Back to Dashboard
+        </a>
+    </div>
+
+    <!-- Performance Summary -->
+    <div class="row g-3">
+
+        <div class="col-md-3 col-sm-6">
+            <div class="summary-card">
+                <h6>Overall Percentage</h6>
+                <h3>--%</h3>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <div class="summary-card">
+                <h6>CGPA</h6>
+                <h3>--</h3>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <div class="summary-card">
+                <h6>Subjects</h6>
+                <h3>--</h3>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <div class="summary-card">
+                <h6>Result Status</h6>
+                <h3>--</h3>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Subject-wise Marks -->
+    <div class="content-card">
+
+        <h5 class="section-title">
+            <i class="bi bi-journal-check me-2"></i>
+            Subject-wise Performance
+        </h5>
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle">
+
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Internal Marks</th>
+                        <th>External Marks</th>
+                        <th>Total</th>
+                        <th>Grade</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Applied Mathematics</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td><span class="result-badge">Pending</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Applied Physics</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td><span class="result-badge">Pending</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Applied Chemistry</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td><span class="result-badge">Pending</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Electrical Science</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td><span class="result-badge">Pending</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Manufacturing Process</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td><span class="result-badge">Pending</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>Communication Skills</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td><span class="result-badge">Pending</span></td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <!-- Examination History -->
+    <div class="content-card">
+
+        <h5 class="section-title">
+            <i class="bi bi-clock-history me-2"></i>
+            Examination History
+        </h5>
+
+        <div class="table-responsive">
+
+            <table class="table table-hover">
+
+                <thead>
+                    <tr>
+                        <th>Examination</th>
+                        <th>Academic Session</th>
+                        <th>Result</th>
+                        <th>Percentage</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Internal Assessment 1</td>
+                        <td>2026–27</td>
+                        <td>--</td>
+                        <td>--</td>
+                    </tr>
+
+                    <tr>
+                        <td>Internal Assessment 2</td>
+                        <td>2026–27</td>
+                        <td>--</td>
+                        <td>--</td>
+                    </tr>
+
+                    <tr>
+                        <td>End Semester Examination</td>
+                        <td>2026–27</td>
+                        <td>--</td>
+                        <td>--</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <div class="notice">
+            <i class="bi bi-info-circle me-2"></i>
+            This page currently displays placeholder information.
+            Actual marks, grades, CGPA and examination results will be
+            retrieved from the backend.
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

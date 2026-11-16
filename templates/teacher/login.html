@@ -1,0 +1,190 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Teacher Login | Academic Management System{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/teacher-login.css' %}">
+
+<style>
+    .login-wrapper {
+        min-height: 75vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 35px 15px;
+    }
+
+    .login-card {
+        width: 100%;
+        max-width: 440px;
+        background: #FFFFFF;
+        border: 1px solid #EADDD5;
+        border-radius: 18px;
+        padding: 35px;
+        box-shadow: 0 5px 20px rgba(73, 53, 46, 0.06);
+    }
+
+    .login-icon {
+        width: 65px;
+        height: 65px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 18px;
+        border-radius: 50%;
+        background: #EADDD5;
+        color: #C98F91;
+        font-size: 28px;
+    }
+
+    .login-heading {
+        color: #49352E;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 8px;
+    }
+
+    .login-subtitle {
+        color: #A18B7B;
+        text-align: center;
+        font-size: 13px;
+        margin-bottom: 28px;
+    }
+
+    .login-card .form-label {
+        color: #49352E;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    .login-card .form-control {
+        border: 1px solid #EADDD5;
+        border-radius: 9px;
+        padding: 12px;
+    }
+
+    .login-card .form-control:focus {
+        border-color: #C98F91;
+        box-shadow: 0 0 0 0.15rem rgba(201, 143, 145, 0.2);
+    }
+
+    .login-btn {
+        width: 100%;
+        background: #C98F91;
+        color: #FFFFFF;
+        border: none;
+        border-radius: 9px;
+        padding: 12px;
+        font-weight: 600;
+        margin-top: 8px;
+    }
+
+    .login-btn:hover {
+        background: #A87578;
+        color: #FFFFFF;
+    }
+
+    .register-text {
+        text-align: center;
+        margin-top: 23px;
+        color: #A18B7B;
+        font-size: 13px;
+    }
+
+    .register-text a {
+        color: #C98F91;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    @media (max-width: 480px) {
+        .login-card {
+            padding: 25px 20px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block navbar %}
+<nav class="navbar">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <i class="bi bi-mortarboard-fill"></i>
+            Academic Management System
+        </a>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+
+<div class="login-wrapper">
+
+    <div class="login-card">
+
+        <div class="login-icon">
+            <i class="bi bi-person-workspace"></i>
+        </div>
+
+        <h2 class="login-heading">Teacher Login</h2>
+
+        <p class="login-subtitle">
+            Welcome back! Sign in to access your teacher portal.
+        </p>
+
+        <form method="POST" action="#">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="email" class="form-label">
+                    College Email ID
+                </label>
+
+                <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your college email"
+                    autocomplete="username"
+                    required
+                >
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="login-btn">
+                Login
+                <i class="bi bi-arrow-right ms-1"></i>
+            </button>
+
+        </form>
+
+        <div class="register-text">
+            Don't have an account?
+            <a href="{% url 'teacher_register' %}">
+                Register here
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

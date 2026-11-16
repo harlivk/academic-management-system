@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Teacher Timetable | Academic Management System{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/teacher-timetable.css' %}">
+{% endblock %}
+
+{% block navbar %}{% endblock %}
+
+{% block content %}
+<div class="page-wrapper">
+
+    <div class="page-header">
+        <div>
+            <h2>My Timetable</h2>
+            <p>View your weekly teaching schedule</p>
+        </div>
+        <a href="{% url 'teacher_dashboard' %}" class="back-link">
+            <i class="bi bi-arrow-left"></i> Back to Dashboard
+        </a>
+    </div>
+
+    <div class="summary-grid">
+        <div class="summary-card">
+            <h6>Total Classes This Week</h6>
+            <h3>--</h3>
+        </div>
+        <div class="summary-card">
+            <h6>Subjects Assigned</h6>
+            <h3>--</h3>
+        </div>
+        <div class="summary-card">
+            <h6>Teaching Hours</h6>
+            <h3>--</h3>
+        </div>
+    </div>
+
+    <div class="content-card">
+        <h5><i class="bi bi-calendar-week"></i> Weekly Schedule</h5>
+
+        <div class="table-responsive">
+            <table class="table table-bordered timetable-table">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>09:00 - 10:00</td>
+                        <td>
+                            <div class="class-box">
+                                <strong>Mathematics</strong>
+                                <small>Section A</small>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td>
+                            <div class="class-box">
+                                <strong>Mathematics</strong>
+                                <small>Section B</small>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td>
+                            <div class="class-box">
+                                <strong>Mathematics</strong>
+                                <small>Section A</small>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>10:00 - 11:00</td>
+                        <td></td>
+                        <td>
+                            <div class="class-box">
+                                <strong>Physics</strong>
+                                <small>Section A</small>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td>
+                            <div class="class-box">
+                                <strong>Physics</strong>
+                                <small>Section B</small>
+                            </div>
+                        </td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>11:00 - 12:00</td>
+                        <td>
+                            <div class="class-box">
+                                <strong>Computer Science</strong>
+                                <small>Section A</small>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td>
+                            <div class="class-box">
+                                <strong>Computer Science</strong>
+                                <small>Section B</small>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td>
+                            <div class="class-box">
+                                <strong>Computer Science</strong>
+                                <small>Section A</small>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>12:00 - 01:00</td>
+                        <td colspan="5" class="break-box">Lunch Break</td>
+                    </tr>
+
+                    <tr>
+                        <td>01:00 - 02:00</td>
+                        <td></td>
+                        <td>
+                            <div class="class-box">
+                                <strong>Programming</strong>
+                                <small>Section A</small>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td>
+                            <div class="class-box">
+                                <strong>Programming</strong>
+                                <small>Section B</small>
+                            </div>
+                        </td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>02:00 - 03:00</td>
+                        <td>
+                            <div class="class-box">
+                                <strong>Lab Session</strong>
+                                <small>Section A</small>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td>
+                            <div class="class-box">
+                                <strong>Lab Session</strong>
+                                <small>Section B</small>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td>
+                            <div class="class-box">
+                                <strong>Lab Session</strong>
+                                <small>Section A</small>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="notice">
+            <i class="bi bi-info-circle"></i>
+            This is a sample timetable. Your actual schedule will be displayed once timetable data is connected to the system.
+        </div>
+    </div>
+
+</div>
+{% endblock %}

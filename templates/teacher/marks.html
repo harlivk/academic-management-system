@@ -1,0 +1,359 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Marks & Results | Teacher Portal{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/teacher-marks.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid py-4">
+
+    <!-- Page Heading -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+        <div>
+            <h2 class="page-heading">Marks & Results</h2>
+            <p class="page-subtitle mb-0">
+                Manage student performance and academic results.
+            </p>
+        </div>
+
+        <button class="btn btn-custom" id="exportResultsBtn">
+            <i class="bi bi-download me-2"></i>
+            Export Results
+        </button>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="row g-3 mb-4">
+
+        <div class="col-md-3 col-sm-6">
+            <div class="summary-card">
+                <i class="bi bi-people summary-icon"></i>
+                <div class="summary-number">06</div>
+                <div class="summary-label">Students Listed</div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <div class="summary-card">
+                <i class="bi bi-book summary-icon"></i>
+                <div class="summary-number">06</div>
+                <div class="summary-label">Subjects</div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <div class="summary-card">
+                <i class="bi bi-clipboard-check summary-icon"></i>
+                <div class="summary-number">--</div>
+                <div class="summary-label">Marks Entered</div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <div class="summary-card">
+                <i class="bi bi-graph-up-arrow summary-icon"></i>
+                <div class="summary-number">--%</div>
+                <div class="summary-label">Class Average</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Subject Overview -->
+    <div class="content-card mb-4">
+
+        <h5 class="section-heading mb-1">Subject-wise Performance</h5>
+        <p class="page-subtitle small mb-4">
+            Overview of marks entry for your assigned subjects.
+        </p>
+
+        <div class="row g-3">
+
+            <div class="col-lg-4 col-md-6">
+                <div class="subject-card">
+                    <div class="subject-name">Applied Mathematics</div>
+                    <div class="subject-code mb-3">AM101</div>
+                    <div class="d-flex justify-content-between small mb-2">
+                        <span>Marks entered</span>
+                        <strong>--%</strong>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" style="width:0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="subject-card">
+                    <div class="subject-name">Applied Physics</div>
+                    <div class="subject-code mb-3">AP102</div>
+                    <div class="d-flex justify-content-between small mb-2">
+                        <span>Marks entered</span>
+                        <strong>--%</strong>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" style="width:0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="subject-card">
+                    <div class="subject-name">Engineering Chemistry</div>
+                    <div class="subject-code mb-3">EC103</div>
+                    <div class="d-flex justify-content-between small mb-2">
+                        <span>Marks entered</span>
+                        <strong>--%</strong>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" style="width:0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="subject-card">
+                    <div class="subject-name">Electrical Science</div>
+                    <div class="subject-code mb-3">ES104</div>
+                    <div class="d-flex justify-content-between small mb-2">
+                        <span>Marks entered</span>
+                        <strong>--%</strong>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" style="width:0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="subject-card">
+                    <div class="subject-name">Manufacturing Process</div>
+                    <div class="subject-code mb-3">MP105</div>
+                    <div class="d-flex justify-content-between small mb-2">
+                        <span>Marks entered</span>
+                        <strong>--%</strong>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" style="width:0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="subject-card">
+                    <div class="subject-name">Communication Skills</div>
+                    <div class="subject-code mb-3">CS106</div>
+                    <div class="d-flex justify-content-between small mb-2">
+                        <span>Marks entered</span>
+                        <strong>--%</strong>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" style="width:0%"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Student Marks Table -->
+    <div class="content-card">
+
+        <div class="mb-3">
+            <h5 class="section-heading mb-1">Student Marks Records</h5>
+            <p class="page-subtitle small mb-0">
+                Sample student performance records.
+            </p>
+        </div>
+
+        <!-- Search and Filters -->
+        <div class="row g-3 mb-4">
+
+            <div class="col-lg-4">
+                <input
+                    type="text"
+                    id="studentSearch"
+                    class="form-control custom-input"
+                    placeholder="Search name or enrollment number..."
+                >
+            </div>
+
+            <div class="col-lg-3">
+                <select id="sectionFilter" class="form-select custom-input">
+                    <option value="all">All Sections</option>
+                    <option value="a">Section A</option>
+                    <option value="b">Section B</option>
+                </select>
+            </div>
+
+            <div class="col-lg-3">
+                <select id="subjectFilter" class="form-select custom-input">
+                    <option value="all">All Subjects</option>
+                    <option value="mathematics">Applied Mathematics</option>
+                    <option value="physics">Applied Physics</option>
+                    <option value="chemistry">Engineering Chemistry</option>
+                    <option value="electrical">Electrical Science</option>
+                    <option value="manufacturing">Manufacturing Process</option>
+                    <option value="communication">Communication Skills</option>
+                </select>
+            </div>
+
+            <div class="col-lg-2">
+                <select id="resultFilter" class="form-select custom-input">
+                    <option value="all">All Results</option>
+                    <option value="entered">Entered</option>
+                    <option value="pending">Pending</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Enrollment No.</th>
+                        <th>Section</th>
+                        <th>Subject</th>
+                        <th>Internal (30)</th>
+                        <th>End Sem (70)</th>
+                        <th>Total (100)</th>
+                        <th>Grade</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody id="marksTable">
+
+                    <tr class="marks-row"
+                        data-section="a"
+                        data-subject="mathematics"
+                        data-result="pending">
+                        <td class="student-name">Aarav Sharma</td>
+                        <td>BT2026001</td>
+                        <td>A</td>
+                        <td>Applied Mathematics</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td><span class="grade-badge grade-pending">--</span></td>
+                        <td><span class="grade-badge grade-pending">Pending</span></td>
+                    </tr>
+
+                    <tr class="marks-row"
+                        data-section="a"
+                        data-subject="physics"
+                        data-result="entered">
+                        <td class="student-name">Sanya Gupta</td>
+                        <td>BT2026002</td>
+                        <td>A</td>
+                        <td>Applied Physics</td>
+                        <td>24</td>
+                        <td>58</td>
+                        <td>82</td>
+                        <td><span class="grade-badge grade-good">A</span></td>
+                        <td><span class="grade-badge grade-good">Entered</span></td>
+                    </tr>
+
+                    <tr class="marks-row"
+                        data-section="a"
+                        data-subject="chemistry"
+                        data-result="entered">
+                        <td class="student-name">Rohan Verma</td>
+                        <td>BT2026003</td>
+                        <td>A</td>
+                        <td>Engineering Chemistry</td>
+                        <td>21</td>
+                        <td>46</td>
+                        <td>67</td>
+                        <td><span class="grade-badge grade-average">B</span></td>
+                        <td><span class="grade-badge grade-good">Entered</span></td>
+                    </tr>
+
+                    <tr class="marks-row"
+                        data-section="b"
+                        data-subject="electrical"
+                        data-result="pending">
+                        <td class="student-name">Priya Mehta</td>
+                        <td>BT2026004</td>
+                        <td>B</td>
+                        <td>Electrical Science</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td><span class="grade-badge grade-pending">--</span></td>
+                        <td><span class="grade-badge grade-pending">Pending</span></td>
+                    </tr>
+
+                    <tr class="marks-row"
+                        data-section="b"
+                        data-subject="manufacturing"
+                        data-result="entered">
+                        <td class="student-name">Kabir Singh</td>
+                        <td>BT2026005</td>
+                        <td>B</td>
+                        <td>Manufacturing Process</td>
+                        <td>26</td>
+                        <td>61</td>
+                        <td>87</td>
+                        <td><span class="grade-badge grade-good">A</span></td>
+                        <td><span class="grade-badge grade-good">Entered</span></td>
+                    </tr>
+
+                    <tr class="marks-row"
+                        data-section="b"
+                        data-subject="communication"
+                        data-result="entered">
+                        <td class="student-name">Meera Kapoor</td>
+                        <td>BT2026006</td>
+                        <td>B</td>
+                        <td>Communication Skills</td>
+                        <td>23</td>
+                        <td>49</td>
+                        <td>72</td>
+                        <td><span class="grade-badge grade-average">B</span></td>
+                        <td><span class="grade-badge grade-good">Entered</span></td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+
+        <div class="empty-message" id="emptyMessage">
+            <i class="bi bi-search fs-3"></i>
+            <p class="mb-0 mt-2">No student records match your filters.</p>
+        </div>
+
+    </div>
+
+    <!-- Back to Dashboard -->
+    <div class="mt-4">
+        <a href="{% url 'teacher_dashboard' %}"
+           class="btn btn-outline-secondary rounded-3">
+            <i class="bi bi-arrow-left me-2"></i>
+            Back to Dashboard
+        </a>
+    </div>
+
+    <div class="alert mt-4 rounded-3"
+         style="background:#F7F1E8; color:#806D62; border:none;">
+        <i class="bi bi-info-circle me-2"></i>
+        These are demonstration records. Actual marks entry, grade calculation,
+        result publishing and exporting will be connected to the backend later.
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/teacher-marks.js' %}"></script>
+{% endblock %}

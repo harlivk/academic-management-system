@@ -1,0 +1,230 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}My Subjects | Teacher Portal{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/teacher-subjects.css' %}">
+{% endblock %}
+
+{% block navbar %}
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'teacher_dashboard' %}">
+            <i class="bi bi-mortarboard-fill"></i>
+            Academic Management System
+        </a>
+        <span class="badge rounded-pill px-3 py-2"
+              style="background:#EADDD5;color:#49352E;">
+            Teacher Portal
+        </span>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="container page-wrapper">
+
+    <!-- PAGE HEADER -->
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+        <div>
+            <a href="{% url 'teacher_dashboard' %}" class="back-link">
+                <i class="bi bi-arrow-left"></i> Back to Dashboard
+            </a>
+
+            <h2 class="page-heading mt-3 mb-1">My Subjects</h2>
+
+            <p class="page-subtitle mb-0">
+                View your assigned subjects and their academic details.
+            </p>
+        </div>
+    </div>
+
+    <!-- SUMMARY CARDS -->
+    <div class="row g-3 mb-4">
+
+        <div class="col-md-4">
+            <div class="summary-card">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <p class="summary-label mb-1">Total Subjects</p>
+                        <h3 class="summary-value mb-0">
+                            {{ total_subjects|default:"--" }}
+                        </h3>
+                    </div>
+
+                    <div class="summary-icon">
+                        <i class="bi bi-book"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="summary-card">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <p class="summary-label mb-1">Courses Covered</p>
+                        <h3 class="summary-value mb-0">
+                            {{ total_courses|default:"--" }}
+                        </h3>
+                    </div>
+
+                    <div class="summary-icon">
+                        <i class="bi bi-mortarboard"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="summary-card">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <p class="summary-label mb-1">Academic Year</p>
+                        <h3 class="summary-value mb-0">
+                            {{ academic_year|default:"--" }}
+                        </h3>
+                    </div>
+
+                    <div class="summary-icon">
+                        <i class="bi bi-calendar3"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- SEARCH AND FILTER -->
+    <div class="filter-panel mb-4">
+
+        <div class="row g-3">
+
+            <div class="col-md-7">
+                <label for="subjectSearch" class="form-label fw-semibold">
+                    Search Subjects
+                </label>
+
+                <div class="input-group">
+                    <span class="input-group-text bg-white">
+                        <i class="bi bi-search"></i>
+                    </span>
+
+                    <input
+                        type="text"
+                        id="subjectSearch"
+                        class="form-control"
+                        placeholder="Search by subject name or code..."
+                    >
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <label for="courseFilter" class="form-label fw-semibold">
+                    Filter by Course
+                </label>
+
+                <select id="courseFilter" class="form-select">
+                    <option value="all">All Courses</option>
+                    <option value="btech">B.Tech</option>
+                </select>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ASSIGNED SUBJECTS -->
+    <div class="row g-3" id="subjectList">
+
+        {% for subject in assigned_subjects %}
+
+        <div class="col-md-6 col-lg-4 subject-item"
+             data-course="{{ subject.course|slugify }}">
+
+            <div class="subject-card">
+
+                <div class="d-flex align-items-center gap-3 mb-3">
+
+                    <div class="subject-icon">
+                        <i class="bi bi-book"></i>
+                    </div>
+
+                    <div>
+                        <h5 class="subject-title mb-1">
+                            {{ subject.name }}
+                        </h5>
+
+                        <p class="subject-code mb-0">
+                            {{ subject.code|default:"Code not assigned" }}
+                        </p>
+                    </div>
+
+                </div>
+
+                <span class="subject-tag">
+                    {{ subject.course|default:"Course not assigned" }}
+                </span>
+
+                <div class="mt-3">
+
+                    <p class="subject-detail">
+                        <i class="bi bi-calendar-week"></i>
+                        Semester {{ subject.semester|default:"--" }}
+                    </p>
+
+                    <p class="subject-detail">
+                        <i class="bi bi-clock"></i>
+                        {{ subject.hours_per_week|default:"--" }} Hours / Week
+                    </p>
+
+                </div>
+
+                <div class="student-count">
+                    <i class="bi bi-people"></i>
+                    Assigned Students:
+                    {{ subject.assigned_students_count|default:"0" }}
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <!-- EMPTY STATE -->
+    <div class="empty-state" id="emptyState">
+
+        <i class="bi bi-search"></i>
+
+        <h5 class="mt-3">No Subjects Found</h5>
+
+        <p class="mb-0">
+            No subjects are currently assigned to you,
+            or try changing your search or filter.
+        </p>
+
+    </div>
+
+    <!-- INFORMATION NOTE -->
+    <div class="mt-4 p-3 rounded-3"
+         style="background:#EADDD5;color:#49352E;">
+
+        <i class="bi bi-info-circle me-2"></i>
+
+        <strong>Note:</strong>
+        This page displays only the subjects assigned to the
+        logged-in teacher by the Admin/Timetable Coordinator.
+
+    </div>
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/teacher-subjects.js' %}"></script>
+{% endblock %}

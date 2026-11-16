@@ -1,0 +1,207 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Login | Academic Management System{% endblock %}
+
+{% block content %}
+
+<style>
+    body {
+        background-color: #F7F1E8;
+        font-family: 'Segoe UI', sans-serif;
+        color: #49352E;
+    }
+
+    .login-wrapper {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 25px;
+    }
+
+    .login-card {
+        width: 100%;
+        max-width: 950px;
+        min-height: 550px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background: #FFFDF9;
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow: 0 12px 40px rgba(73, 53, 46, 0.10);
+    }
+
+    .welcome-panel {
+        background: #EADDD5;
+        padding: 55px 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .welcome-panel h1 {
+        font-size: 38px;
+        font-weight: 700;
+        color: #49352E;
+        margin-bottom: 18px;
+    }
+
+    .welcome-panel p {
+        color: #78665B;
+        line-height: 1.8;
+        font-size: 15px;
+    }
+
+    .welcome-decoration {
+        margin-top: 35px;
+        background: #C98F91;
+        width: 75px;
+        height: 6px;
+        border-radius: 10px;
+    }
+
+    .form-panel {
+        padding: 55px 45px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .form-panel h2 {
+        font-size: 29px;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .subtitle {
+        color: #A18B7B;
+        margin-bottom: 32px;
+        font-size: 14px;
+    }
+
+    .form-label {
+        font-weight: 600;
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+
+    .form-control {
+        padding: 13px;
+        border: 1px solid #EADDD5;
+        border-radius: 10px;
+        background: #FDF9F5;
+    }
+
+    .form-control:focus {
+        border-color: #C98F91;
+        box-shadow: 0 0 0 3px rgba(201, 143, 145, 0.15);
+    }
+
+    .login-btn {
+        background: #49352E;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 13px;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+
+    .login-btn:hover {
+        background: #C98F91;
+        color: white;
+    }
+
+    .footer-text {
+        color: #A18B7B;
+        font-size: 12px;
+        text-align: center;
+        margin-top: 28px;
+    }
+
+    @media (max-width: 768px) {
+        .login-card {
+            grid-template-columns: 1fr;
+        }
+
+        .welcome-panel {
+            padding: 35px 30px;
+        }
+
+        .welcome-panel h1 {
+            font-size: 29px;
+        }
+
+        .form-panel {
+            padding: 40px 30px;
+        }
+    }
+</style>
+
+<div class="login-wrapper">
+
+    <div class="login-card">
+
+        <div class="welcome-panel">
+            <h1>Welcome to<br>CampusConnect.</h1>
+
+            <p>
+                Your academic journey, organised in one place.
+                Manage your learning, track your progress and
+                stay connected with your institution.
+            </p>
+
+            <div class="welcome-decoration"></div>
+        </div>
+
+        <div class="form-panel">
+
+            <h2>Welcome Back!</h2>
+
+            <p class="subtitle">
+                Sign in to access your academic portal.
+            </p>
+
+            <form method="POST">
+                {% csrf_token %}
+
+                <div class="mb-4">
+                    <label class="form-label">Username</label>
+
+                    <input
+                        type="text"
+                        name="username"
+                        class="form-control"
+                        placeholder="Enter your username"
+                    >
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label">Password</label>
+
+                    <input
+                        type="password"
+                        name="password"
+                        class="form-control"
+                        placeholder="Enter your password"
+                    >
+                </div>
+
+                <button type="submit" class="login-btn w-100">
+                    Sign In
+                </button>
+
+            </form>
+
+            <p class="footer-text">
+                Academic Management System
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
