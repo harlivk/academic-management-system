@@ -1,0 +1,185 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Academic Management System{% endblock %}
+
+{% block content %}
+
+<style>
+    body {
+        background-color: #F7F1E8;
+        font-family: 'Segoe UI', sans-serif;
+        color: #49352E;
+    }
+
+    .landing-container {
+        min-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 50px 20px;
+    }
+
+    .main-title {
+        color: #49352E;
+        font-weight: 750;
+        text-align: center;
+        font-size: clamp(2rem, 5vw, 3rem);
+        letter-spacing: -1px;
+    }
+
+    .tagline {
+        color: #A18B7B;
+        text-align: center;
+        margin-top: 12px;
+        margin-bottom: 50px;
+        font-size: 1.1rem;
+    }
+
+    .portal-card {
+        background-color: #EADDD5;
+        border: 1px solid #C98F91;
+        border-radius: 22px;
+        padding: 40px 28px;
+        text-align: center;
+        height: 100%;
+        transition: all 0.3s ease;
+    }
+
+    .portal-card:hover {
+        transform: translateY(-7px);
+        box-shadow: 0 14px 30px rgba(73, 53, 46, 0.12);
+    }
+
+    .portal-icon {
+        width: 85px;
+        height: 85px;
+        margin: 0 auto 22px;
+        background-color: #F7F1E8;
+        color: #C98F91;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 38px;
+    }
+
+    .portal-card h3 {
+        color: #49352E;
+        font-weight: 700;
+        margin-bottom: 14px;
+    }
+
+    .portal-card p {
+        color: #A18B7B;
+        line-height: 1.7;
+        min-height: 75px;
+    }
+
+    .continue-btn {
+        background-color: #C98F91;
+        color: #F7F1E8;
+        border: 1px solid #C98F91;
+        border-radius: 10px;
+        padding: 11px 35px;
+        font-weight: 600;
+        margin-top: 12px;
+        transition: 0.3s ease;
+    }
+
+    .continue-btn:hover {
+        background-color: #49352E;
+        border-color: #49352E;
+        color: #F7F1E8;
+    }
+
+    .footer-text {
+        color: #A18B7B;
+        margin-top: 55px;
+        font-size: 0.9rem;
+        text-align: center;
+    }
+
+    @media (max-width: 576px) {
+        .landing-container {
+            padding: 35px 15px;
+        }
+
+        .tagline {
+            margin-bottom: 30px;
+        }
+
+        .portal-card {
+            padding: 30px 22px;
+        }
+    }
+</style>
+
+<div class="landing-container">
+
+    <div class="mb-4">
+        <h1 class="main-title">
+            Academic Management System
+        </h1>
+
+        <p class="tagline">
+            Your Academic Workspace, All in One Place
+        </p>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center g-4">
+
+            <div class="col-md-5 col-lg-4">
+                <div class="portal-card">
+
+                    <div class="portal-icon">
+                        <i class="bi bi-mortarboard-fill"></i>
+                    </div>
+
+                    <h3>Student Portal</h3>
+
+                    <p>
+                        Access your academic records, attendance,
+                        assignments, marks and important notices.
+                    </p>
+
+                    <a href="/student/login/" class="btn continue-btn">
+                        Continue
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="col-md-5 col-lg-4">
+                <div class="portal-card">
+
+                    <div class="portal-icon">
+                        <i class="bi bi-person-workspace"></i>
+                    </div>
+
+                    <h3>Teacher Portal</h3>
+
+                    <p>
+                        Manage your sections, attendance,
+                        assignments, marks and academic activities.
+                    </p>
+
+                    <a href="/teacher/login/" class="btn continue-btn">
+                        Continue
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <p class="footer-text">
+        © 2026 Academic Management System
+    </p>
+
+</div>
+
+{% endblock %}

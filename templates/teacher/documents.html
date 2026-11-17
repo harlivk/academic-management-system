@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}My Documents | Teacher Portal{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/teacher-documents.css' %}">
+{% endblock %}
+
+{% block navbar %}{% endblock %}
+
+{% block content %}
+<div class="documents-container">
+
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">
+                <i class="bi bi-folder2-open"></i> My Documents
+            </h1>
+            <p class="page-subtitle">
+                Access and manage your academic documents and teaching resources.
+            </p>
+        </div>
+
+        <a href="{% url 'teacher_dashboard' %}" class="back-btn">
+            <i class="bi bi-arrow-left"></i> Back to Dashboard
+        </a>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="summary-grid">
+
+        <div class="summary-card">
+            <div class="summary-icon">
+                <i class="bi bi-folder"></i>
+            </div>
+            <h3>06</h3>
+            <p>Total Documents</p>
+        </div>
+
+        <div class="summary-card">
+            <div class="summary-icon">
+                <i class="bi bi-file-earmark-pdf"></i>
+            </div>
+            <h3>03</h3>
+            <p>PDF Documents</p>
+        </div>
+
+        <div class="summary-card">
+            <div class="summary-icon">
+                <i class="bi bi-clock-history"></i>
+            </div>
+            <h3>02</h3>
+            <p>Recently Added</p>
+        </div>
+
+    </div>
+
+    <!-- Documents Section -->
+    <div class="content-card">
+
+        <div class="section-heading">
+            <div>
+                <h2>Available Documents</h2>
+                <p>Search and browse your teaching resources.</p>
+            </div>
+        </div>
+
+        <div class="filter-row">
+            <input
+                type="text"
+                id="documentSearch"
+                class="form-control"
+                placeholder="Search documents..."
+            >
+
+            <select id="documentFilter" class="form-select">
+                <option value="all">All Categories</option>
+                <option value="notes">Lecture Notes</option>
+                <option value="syllabus">Syllabus</option>
+                <option value="assignments">Assignments</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <div class="documents-grid" id="documentsGrid">
+
+            <div class="document-item" data-category="notes">
+                <div class="document-icon">
+                    <i class="bi bi-file-earmark-pdf"></i>
+                </div>
+                <div class="document-info">
+                    <h5>Lecture Notes - Mathematics</h5>
+                    <p>Lecture Notes</p>
+                    <span>PDF Document</span>
+                </div>
+                <a href="#" class="download-btn" title="Download">
+                    <i class="bi bi-download"></i>
+                </a>
+            </div>
+
+            <div class="document-item" data-category="notes">
+                <div class="document-icon">
+                    <i class="bi bi-file-earmark-pdf"></i>
+                </div>
+                <div class="document-info">
+                    <h5>Lecture Notes - Physics</h5>
+                    <p>Lecture Notes</p>
+                    <span>PDF Document</span>
+                </div>
+                <a href="#" class="download-btn" title="Download">
+                    <i class="bi bi-download"></i>
+                </a>
+            </div>
+
+            <div class="document-item" data-category="syllabus">
+                <div class="document-icon">
+                    <i class="bi bi-file-earmark-text"></i>
+                </div>
+                <div class="document-info">
+                    <h5>Semester Syllabus</h5>
+                    <p>Syllabus</p>
+                    <span>PDF Document</span>
+                </div>
+                <a href="#" class="download-btn" title="Download">
+                    <i class="bi bi-download"></i>
+                </a>
+            </div>
+
+            <div class="document-item" data-category="assignments">
+                <div class="document-icon">
+                    <i class="bi bi-file-earmark-word"></i>
+                </div>
+                <div class="document-info">
+                    <h5>Programming Assignment</h5>
+                    <p>Assignments</p>
+                    <span>Document</span>
+                </div>
+                <a href="#" class="download-btn" title="Download">
+                    <i class="bi bi-download"></i>
+                </a>
+            </div>
+
+            <div class="document-item" data-category="other">
+                <div class="document-icon">
+                    <i class="bi bi-file-earmark-pdf"></i>
+                </div>
+                <div class="document-info">
+                    <h5>Academic Guidelines</h5>
+                    <p>Other</p>
+                    <span>PDF Document</span>
+                </div>
+                <a href="#" class="download-btn" title="Download">
+                    <i class="bi bi-download"></i>
+                </a>
+            </div>
+
+            <div class="document-item" data-category="notes">
+                <div class="document-icon">
+                    <i class="bi bi-file-earmark-pdf"></i>
+                </div>
+                <div class="document-info">
+                    <h5>Lecture Notes - Computer Science</h5>
+                    <p>Lecture Notes</p>
+                    <span>PDF Document</span>
+                </div>
+                <a href="#" class="download-btn" title="Download">
+                    <i class="bi bi-download"></i>
+                </a>
+            </div>
+
+        </div>
+
+        <div id="emptyMessage" class="empty-message">
+            No documents found matching your search.
+        </div>
+
+    </div>
+
+    <p class="bottom-note">
+        These are sample documents. Actual files will be loaded after backend integration.
+    </p>
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/teacher-documents.js' %}"></script>
+{% endblock %}

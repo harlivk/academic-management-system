@@ -1,0 +1,203 @@
+.page-wrapper {
+    padding: 25px 0 45px;
+}
+
+.page-heading {
+    color: #49352E;
+    font-weight: 700;
+}
+
+.page-subtitle {
+    color: #A18B7B;
+}
+
+.back-link {
+    color: #49352E;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.back-link:hover {
+    color: #C98F91;
+}
+
+.summary-card,
+.panel {
+    background: #FFFFFF;
+    border: 1px solid #EADDD5;
+    border-radius: 16px;
+    padding: 22px;
+    height: 100%;
+    box-shadow: 0 4px 14px rgba(73, 53, 46, 0.04);
+}
+
+.summary-label {
+    color: #A18B7B;
+    font-size: 14px;
+}
+
+.summary-value {
+    color: #49352E;
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.summary-icon {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: #F7F1E8;
+    color: #C98F91;
+    font-size: 21px;
+}
+
+.filter-panel {
+    background: #FFFFFF;
+    border: 1px solid #EADDD5;
+    border-radius: 15px;
+    padding: 18px;
+}
+
+.form-control,
+.form-select {
+    border: 1px solid #EADDD5;
+    border-radius: 10px;
+    padding: 11px 13px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #C98F91;
+    box-shadow: 0 0 0 0.2rem rgba(201, 143, 145, 0.15);
+}
+
+.panel-heading {
+    color: #49352E;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+.attendance-progress {
+    height: 9px;
+    background: #F1E9E3;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.attendance-progress .progress-bar {
+    background: #C98F91;
+    border-radius: 20px;
+}
+
+.subject-row {
+    margin-bottom: 20px;
+}
+
+.subject-row:last-child {
+    margin-bottom: 0;
+}
+
+.subject-name {
+    color: #49352E;
+    font-weight: 600;
+}
+
+.subject-percentage {
+    color: #A18B7B;
+    font-size: 13px;
+}
+
+.table-panel {
+    background: #FFFFFF;
+    border: 1px solid #EADDD5;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.table-heading {
+    padding: 20px 22px;
+    border-bottom: 1px solid #EADDD5;
+}
+
+.table-heading h5 {
+    color: #49352E;
+    font-weight: 700;
+}
+
+.table {
+    margin-bottom: 0;
+    min-width: 700px;
+}
+
+.table thead th {
+    background: #F7F1E8;
+    color: #49352E;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 15px;
+    white-space: nowrap;
+}
+
+.table tbody td {
+    color: #78675D;
+    padding: 15px;
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+.status {
+    display: inline-block;
+    padding: 5px 11px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.present {
+    background: #E4F1E7;
+    color: #42744D;
+}
+
+.absent {
+    background: #F8E5E3;
+    color: #A34E4B;
+}
+
+.late {
+    background: #FFF0D9;
+    color: #9A6A22;
+}
+
+.student-avatar {
+    width: 35px;
+    height: 35px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #EADDD5;
+    color: #49352E;
+    font-weight: 700;
+    margin-right: 8px;
+}
+
+.empty-state {
+    display: none;
+    text-align: center;
+    padding: 30px 15px;
+    color: #A18B7B;
+}
+
+.empty-state i {
+    font-size: 32px;
+    color: #C98F91;
+}
+
+@media (max-width: 576px) {
+    .page-heading {
+        font-size: 24px;
+    }
+}

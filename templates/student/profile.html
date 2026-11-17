@@ -1,0 +1,112 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}My Profile | Student Portal{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/student-profile.css' %}">
+{% endblock %}
+
+{% block navbar %}{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+
+    <div class="profile-topbar">
+        <div>
+            <h2 class="page-title">My Profile</h2>
+            <p class="page-subtitle">View your personal and academic information</p>
+        </div>
+        <a href="{% url 'student_dashboard' %}" class="back-btn">
+            <i class="bi bi-arrow-left"></i> Back to Dashboard
+        </a>
+    </div>
+
+    <div class="profile-header">
+        <div class="profile-avatar">
+            <i class="bi bi-person-fill"></i>
+        </div>
+        <div>
+            <h3 class="profile-name">{{ student.name }}</h3>
+            <p class="profile-role">Student</p>
+            <span class="status-badge">
+                <i class="bi bi-check-circle-fill"></i> Active Student
+            </span>
+        </div>
+    </div>
+
+    <div class="profile-section">
+        <h4 class="section-heading">
+            <i class="bi bi-person-lines-fill"></i> Personal Information
+        </h4>
+
+        <div class="details-grid">
+            <div>
+                <p class="detail-label">Full Name</p>
+                <p class="detail-value">{{ student.name }}</p>
+            </div>
+
+            <div>
+                <p class="detail-label">Email Address</p>
+                <p class="detail-value">{{ student.college_email }}</p>
+            </div>
+
+            <div>
+                <p class="detail-label">Phone Number</p>
+                <p class="detail-value">Not Provided</p>
+            </div>
+
+            <div>
+                <p class="detail-label">Date of Birth</p>
+                <p class="detail-value">Not Provided</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile-section">
+        <h4 class="section-heading">
+            <i class="bi bi-mortarboard-fill"></i> Academic Information
+        </h4>
+
+        <div class="details-grid">
+            <div>
+                <p class="detail-label">Student ID</p>
+                <p class="detail-value">{{ student.enrollment_no }}</p>
+            </div>
+
+            <div>
+                <p class="detail-label">Course</p>
+                <p class="detail-value">{{ section.course }}</p>
+            </div>
+
+            <div>
+                <p class="detail-label">Department</p>
+                <p class="detail-value">Not Provided</p>
+            </div>
+
+            <div>
+                <p class="detail-label">Current Semester</p>
+                <p class="detail-value">{{ section.semester }}</p>
+            </div>
+
+            <div>
+                <p class="detail-label">Academic Year</p>
+                <p class="detail-value">{{ section.academic_year }}</p>
+            </div>
+
+            <div>
+                <p class="detail-label">Section</p>
+                <p class="detail-value">{{ section.section }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile-note">
+        <i class="bi bi-info-circle-fill"></i>
+        Your profile information is maintained by the institution.
+        Contact the administration if any details need correction.
+    </div>
+
+</div>
+{% endblock %}

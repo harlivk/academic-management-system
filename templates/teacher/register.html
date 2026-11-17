@@ -1,0 +1,177 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Teacher Registration | Academic Management System{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/teacher-register.css' %}">
+{% endblock %}
+
+{% block navbar %}
+<nav class="navbar">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <i class="bi bi-mortarboard-fill"></i>
+            Academic Management System
+        </a>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="register-container">
+
+    <div class="register-card">
+
+        <div class="register-icon">
+            <i class="bi bi-person-badge-fill"></i>
+        </div>
+
+        <h2 class="register-title">Teacher Registration</h2>
+
+        <p class="register-subtitle">
+            Create your faculty account
+        </p>
+
+        <form method="POST" action="#" id="teacherRegisterForm">
+
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label class="form-label" for="full_name">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    class="form-control"
+                    id="full_name"
+                    name="full_name"
+                    placeholder="Enter your full name"
+                    autocomplete="name"
+                    required
+                >
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="email">
+                    College Email ID
+                </label>
+
+                <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your college email"
+                    autocomplete="email"
+                    required
+                >
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="faculty_id">
+                    Faculty ID
+                </label>
+
+                <input
+                    type="text"
+                    class="form-control"
+                    id="faculty_id"
+                    name="faculty_id"
+                    placeholder="Enter your faculty ID"
+                    required
+                >
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="password">
+                    Password
+                </label>
+
+                <div class="password-wrapper">
+                    <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        name="password"
+                        placeholder="Create a password"
+                        autocomplete="new-password"
+                        minlength="8"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="toggle-password"
+                        data-target="password"
+                        aria-label="Show password"
+                    >
+                        <i class="bi bi-eye"></i>
+                    </button>
+                </div>
+
+                <p class="password-note mt-1">
+                    Use a strong password with at least 8 characters.
+                </p>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="confirm_password">
+                    Confirm Password
+                </label>
+
+                <div class="password-wrapper">
+                    <input
+                        type="password"
+                        class="form-control"
+                        id="confirm_password"
+                        name="confirm_password"
+                        placeholder="Re-enter your password"
+                        autocomplete="new-password"
+                        minlength="8"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="toggle-password"
+                        data-target="confirm_password"
+                        aria-label="Show password"
+                    >
+                        <i class="bi bi-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <button type="submit" class="register-btn">
+                Create Teacher Account
+                <i class="bi bi-arrow-right ms-1"></i>
+            </button>
+
+        </form>
+
+        <p class="text-center mt-4 mb-2">
+            Already have an account?
+
+            <a href="{% url 'teacher_login' %}" class="login-link">
+                Login here
+            </a>
+        </p>
+
+        <p class="text-center mb-0">
+            <a href="/" class="login-link">
+                <i class="bi bi-arrow-left"></i>
+                Back to Home
+            </a>
+        </p>
+
+    </div>
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/teacher-register.js' %}"></script>
+{% endblock %}

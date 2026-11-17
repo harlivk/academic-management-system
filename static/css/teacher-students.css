@@ -1,0 +1,157 @@
+.page-wrapper {
+    padding: 25px 0 45px;
+}
+
+.page-heading {
+    color: #49352E;
+    font-weight: 700;
+}
+
+.page-subtitle {
+    color: #A18B7B;
+}
+
+.back-link {
+    color: #49352E;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.back-link:hover {
+    color: #C98F91;
+}
+
+.summary-card,
+.table-panel {
+    background: #FFFFFF;
+    border: 1px solid #EADDD5;
+    border-radius: 16px;
+    padding: 22px;
+    height: 100%;
+    box-shadow: 0 4px 14px rgba(73, 53, 46, 0.04);
+}
+
+.summary-label {
+    color: #A18B7B;
+    font-size: 14px;
+}
+
+.summary-value {
+    color: #49352E;
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.summary-icon {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: #F7F1E8;
+    color: #C98F91;
+    font-size: 21px;
+}
+
+.filter-panel {
+    background: #FFFFFF;
+    border: 1px solid #EADDD5;
+    border-radius: 15px;
+    padding: 18px;
+}
+
+.form-control,
+.form-select {
+    border: 1px solid #EADDD5;
+    border-radius: 10px;
+    padding: 11px 13px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #C98F91;
+    box-shadow: 0 0 0 0.2rem rgba(201, 143, 145, 0.15);
+}
+
+.table-panel {
+    padding: 0;
+    overflow: hidden;
+}
+
+.table-heading {
+    padding: 20px 22px;
+    border-bottom: 1px solid #EADDD5;
+}
+
+.table-heading h5 {
+    color: #49352E;
+    font-weight: 700;
+}
+
+.table {
+    margin-bottom: 0;
+    min-width: 750px;
+}
+
+.table thead th {
+    background: #F7F1E8;
+    color: #49352E;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 15px;
+    border-bottom: 1px solid #EADDD5;
+    white-space: nowrap;
+}
+
+.table tbody td {
+    color: #78675D;
+    padding: 15px;
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+.student-name {
+    color: #49352E;
+    font-weight: 600;
+}
+
+.student-avatar {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #EADDD5;
+    color: #49352E;
+    font-weight: 700;
+    margin-right: 9px;
+}
+
+.section-badge {
+    background: #F7F1E8;
+    color: #49352E;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.empty-state {
+    display: none;
+    text-align: center;
+    padding: 35px 15px;
+    color: #A18B7B;
+}
+
+.empty-state i {
+    font-size: 35px;
+    color: #C98F91;
+}
+
+@media (max-width: 576px) {
+    .page-heading {
+        font-size: 24px;
+    }
+}

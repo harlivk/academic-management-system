@@ -1,0 +1,558 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Teacher Dashboard | Academic Management System{% endblock %}
+
+{% block extra_css %}
+<style>
+    body { background-color: #F7F1E8; }
+
+    .dashboard-wrapper {
+        display: flex;
+        min-height: 85vh;
+        gap: 24px;
+        padding: 20px 0;
+    }
+
+    .sidebar {
+        width: 250px;
+        flex-shrink: 0;
+        background: #EADDD5;
+        border-radius: 18px;
+        padding: 25px 15px;
+    }
+
+    .sidebar-title {
+        color: #49352E;
+        font-size: 21px;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 8px;
+    }
+
+    .sidebar-subtitle {
+        color: #A18B7B;
+        font-size: 12px;
+        text-align: center;
+        margin-bottom: 28px;
+    }
+
+    .sidebar a,
+    .sidebar .disabled-link {
+        display: block;
+        text-decoration: none;
+        color: #49352E;
+        padding: 12px 14px;
+        margin-bottom: 7px;
+        border-radius: 10px;
+        font-size: 14px;
+        transition: 0.2s;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+        background: #C98F91;
+        color: white;
+    }
+
+    .sidebar .disabled-link {
+        opacity: 0.55;
+        cursor: not-allowed;
+    }
+
+    .sidebar a i,
+    .sidebar .disabled-link i {
+        margin-right: 10px;
+    }
+
+    .main-content {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 28px;
+    }
+
+    .welcome-title {
+        color: #49352E;
+        font-size: 27px;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+
+    .welcome-subtitle {
+        color: #A18B7B;
+        font-size: 14px;
+    }
+
+    .portal-badge {
+        background: #EADDD5;
+        color: #49352E;
+        padding: 9px 16px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    .overview-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin-bottom: 30px;
+    }
+
+    .overview-card {
+        background: white;
+        border-radius: 15px;
+        padding: 20px;
+        border: 1px solid #EADDD5;
+    }
+
+    .overview-icon {
+        font-size: 24px;
+        color: #C98F91;
+        margin-bottom: 12px;
+    }
+
+    .overview-card h3 {
+        color: #49352E;
+        font-size: 23px;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+
+    .overview-card p {
+        color: #A18B7B;
+        font-size: 13px;
+        margin: 0;
+    }
+
+    .section-heading {
+        color: #49352E;
+        font-size: 21px;
+        font-weight: 700;
+        margin-bottom: 17px;
+    }
+
+    .modules-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+    }
+
+    .module-card {
+        background: white;
+        border: 1px solid #EADDD5;
+        border-radius: 16px;
+        padding: 22px;
+        text-decoration: none;
+        display: block;
+        transition: 0.2s;
+        min-height: 155px;
+    }
+
+    .module-card:hover {
+        transform: translateY(-4px);
+        border-color: #C98F91;
+        box-shadow: 0 6px 18px rgba(73, 53, 46, 0.08);
+    }
+
+    .module-card-disabled {
+        cursor: not-allowed;
+        opacity: 0.65;
+    }
+
+    .module-card-disabled:hover {
+        transform: none;
+        border-color: #EADDD5;
+        box-shadow: none;
+    }
+
+    .module-icon {
+        color: #C98F91;
+        font-size: 27px;
+        margin-bottom: 13px;
+    }
+
+    .module-card h5 {
+        color: #49352E;
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 7px;
+    }
+
+    .module-card p {
+        color: #A18B7B;
+        font-size: 13px;
+        margin: 0;
+    }
+
+    .logout-link {
+        color: #49352E;
+        border: 1px solid #C98F91;
+        border-radius: 9px;
+        padding: 9px 15px;
+        font-size: 13px;
+        white-space: nowrap;
+        opacity: 0.6;
+    }
+
+    .upcoming-section {
+        background: #FFFAF5;
+        border: 1px solid #EADDD5;
+        border-radius: 16px;
+        padding: 22px;
+        margin-bottom: 30px;
+    }
+
+    .upcoming-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 18px;
+    }
+
+    .upcoming-header h2 {
+        color: #49352E;
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0 0 5px;
+    }
+
+    .upcoming-header p {
+        color: #A18B7B;
+        font-size: 13px;
+        margin: 0;
+    }
+
+    .view-timetable-link {
+        color: #A18B7B;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    .upcoming-empty {
+        background: #F7F1E8;
+        border-radius: 12px;
+        padding: 28px 15px;
+        text-align: center;
+    }
+
+    .upcoming-empty i {
+        display: block;
+        color: #C98F91;
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+
+    .upcoming-empty h6 {
+        color: #49352E;
+        font-weight: 700;
+        margin-bottom: 6px;
+    }
+
+    .upcoming-empty p {
+        color: #A18B7B;
+        font-size: 13px;
+        margin: 0;
+    }
+
+    .upcoming-table {
+        min-width: 600px;
+        margin-bottom: 0;
+    }
+
+    .upcoming-table th {
+        background: #EADDD5;
+        color: #49352E;
+        font-size: 13px;
+        white-space: nowrap;
+    }
+
+    .upcoming-table td {
+        color: #65544B;
+        font-size: 13px;
+        vertical-align: middle;
+    }
+
+    @media (max-width: 1000px) {
+        .overview-grid { grid-template-columns: repeat(2, 1fr); }
+        .modules-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 700px) {
+        .dashboard-wrapper { flex-direction: column; }
+        .sidebar { width: 100%; }
+
+        .sidebar a,
+        .sidebar .disabled-link {
+            display: inline-block;
+            margin-right: 4px;
+        }
+
+        .topbar { align-items: flex-start; }
+        .welcome-title { font-size: 22px; }
+    }
+
+    @media (max-width: 480px) {
+        .overview-grid,
+        .modules-grid { grid-template-columns: 1fr; }
+
+        .upcoming-section { padding: 16px; }
+    }
+</style>
+{% endblock %}
+
+{% block navbar %}{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-wrapper">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="sidebar-title">Teacher Portal</div>
+        <div class="sidebar-subtitle">Academic Management System</div>
+
+        <a href="{% url 'teacher_dashboard' %}" class="active">
+            <i class="bi bi-grid-fill"></i> Dashboard
+        </a>
+
+        <span class="disabled-link">
+            <i class="bi bi-collection"></i> My Sections
+        </span>
+
+        <span class="disabled-link">
+            <i class="bi bi-book"></i> My Subjects
+        </span>
+
+        <span class="disabled-link">
+            <i class="bi bi-people"></i> Student Lists
+        </span>
+
+        <a href="{% url 'teacher_attendance' %}">
+            <i class="bi bi-calendar-check"></i> Attendance
+        </a>
+
+        <span class="disabled-link">
+            <i class="bi bi-journal-text"></i> Assignments
+        </span>
+
+        <span class="disabled-link">
+            <i class="bi bi-bar-chart"></i> Marks & Results
+        </span>
+
+        <span class="disabled-link">
+            <i class="bi bi-calendar-week"></i> Timetable
+        </span>
+
+        <span class="disabled-link">
+            <i class="bi bi-megaphone"></i> Notice Board
+        </span>
+
+        <span class="disabled-link">
+            <i class="bi bi-folder"></i> Documents
+        </span>
+
+        <span class="disabled-link">
+            <i class="bi bi-person-circle"></i> My Profile
+        </span>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <div class="topbar">
+
+            <div>
+                <h1 class="welcome-title">Welcome, Teacher!</h1>
+                <p class="welcome-subtitle">
+                    Manage your classes, students and academic activities.
+                </p>
+            </div>
+
+            <div class="d-flex align-items-center gap-3 flex-wrap">
+
+                <span class="portal-badge">
+                    <i class="bi bi-person-workspace"></i>
+                    Teacher Portal
+                </span>
+
+                <span class="logout-link" title="Logout functionality not configured yet">
+                    <i class="bi bi-box-arrow-right"></i>
+                    Logout
+                </span>
+
+            </div>
+        </div>
+
+        <!-- OVERVIEW CARDS -->
+        <div class="overview-grid">
+
+            <div class="overview-card">
+                <div class="overview-icon">
+                    <i class="bi bi-people-fill"></i>
+                </div>
+                <h3>--</h3>
+                <p>Total Students</p>
+            </div>
+
+            <div class="overview-card">
+                <div class="overview-icon">
+                    <i class="bi bi-book-half"></i>
+                </div>
+                <h3>--</h3>
+                <p>Assigned Subjects</p>
+            </div>
+
+            <div class="overview-card">
+                <div class="overview-icon">
+                    <i class="bi bi-collection-fill"></i>
+                </div>
+                <h3>--</h3>
+                <p>Assigned Sections</p>
+            </div>
+
+            <div class="overview-card">
+                <div class="overview-icon">
+                    <i class="bi bi-journal-check"></i>
+                </div>
+                <h3>--</h3>
+                <p>Pending Assignments</p>
+            </div>
+
+        </div>
+
+        <!-- MY UPCOMING CLASSES -->
+        <section class="upcoming-section">
+
+            <div class="upcoming-header">
+                <div>
+                    <h2>
+                        <i class="bi bi-calendar-event"></i>
+                        My Upcoming Classes
+                    </h2>
+                    <p>Your upcoming classes based on your assigned timetable.</p>
+                </div>
+
+                <span class="view-timetable-link">
+                    View Full Timetable
+                    <i class="bi bi-arrow-right"></i>
+                </span>
+            </div>
+
+            <div class="table-responsive">
+
+                <table class="table upcoming-table">
+
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Section</th>
+                            <th>Day / Date</th>
+                            <th>Time</th>
+                            <th>Classroom</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td colspan="5">
+                                <div class="upcoming-empty">
+                                    <i class="bi bi-calendar2-x"></i>
+                                    <h6>No upcoming classes available</h6>
+                                    <p>Your assigned classes will appear here once the timetable is published.</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+        <!-- ACADEMIC MANAGEMENT -->
+        <h2 class="section-heading">Academic Management</h2>
+
+        <div class="modules-grid">
+
+            <div class="module-card module-card-disabled">
+                <div class="module-icon"><i class="bi bi-collection"></i></div>
+                <h5>My Sections</h5>
+                <p>View and manage your assigned sections.</p>
+            </div>
+
+            <div class="module-card module-card-disabled">
+                <div class="module-icon"><i class="bi bi-book"></i></div>
+                <h5>My Subjects</h5>
+                <p>View subjects assigned to you.</p>
+            </div>
+
+            <div class="module-card module-card-disabled">
+                <div class="module-icon"><i class="bi bi-people"></i></div>
+                <h5>Student Lists</h5>
+                <p>View student details and section-wise lists.</p>
+            </div>
+
+            <a href="{% url 'teacher_attendance' %}" class="module-card">
+                <div class="module-icon"><i class="bi bi-calendar-check"></i></div>
+                <h5>Attendance</h5>
+                <p>Mark and manage student attendance.</p>
+            </a>
+
+            <div class="module-card module-card-disabled">
+                <div class="module-icon"><i class="bi bi-journal-text"></i></div>
+                <h5>Assignments</h5>
+                <p>Create and manage student assignments.</p>
+            </div>
+
+            <div class="module-card module-card-disabled">
+                <div class="module-icon"><i class="bi bi-bar-chart"></i></div>
+                <h5>Marks & Results</h5>
+                <p>Upload marks and review student performance.</p>
+            </div>
+
+            <div class="module-card module-card-disabled">
+                <div class="module-icon"><i class="bi bi-calendar-week"></i></div>
+                <h5>Timetable</h5>
+                <p>View your personal weekly teaching schedule and assigned classes.</p>
+            </div>
+
+            <div class="module-card module-card-disabled">
+                <div class="module-icon"><i class="bi bi-megaphone"></i></div>
+                <h5>Notice Board</h5>
+                <p>Create and share important academic notices.</p>
+            </div>
+
+            <div class="module-card module-card-disabled">
+                <div class="module-icon"><i class="bi bi-folder"></i></div>
+                <h5>Documents</h5>
+                <p>Manage academic documents and study resources.</p>
+            </div>
+
+            <div class="module-card module-card-disabled">
+                <div class="module-icon"><i class="bi bi-person-circle"></i></div>
+                <h5>My Profile</h5>
+                <p>View and manage your teacher profile.</p>
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+{% endblock %}

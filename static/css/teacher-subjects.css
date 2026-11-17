@@ -1,0 +1,156 @@
+
+.page-wrapper {
+    padding: 25px 0 45px;
+}
+
+.page-heading {
+    color: #49352E;
+    font-weight: 700;
+}
+
+.page-subtitle {
+    color: #A18B7B;
+}
+
+.back-link {
+    color: #49352E;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.back-link:hover {
+    color: #C98F91;
+}
+
+.summary-card,
+.subject-card {
+    background: #FFFFFF;
+    border: 1px solid #EADDD5;
+    border-radius: 16px;
+    padding: 22px;
+    height: 100%;
+    box-shadow: 0 4px 14px rgba(73, 53, 46, 0.04);
+}
+
+.summary-label {
+    color: #A18B7B;
+    font-size: 14px;
+}
+
+.summary-value {
+    color: #49352E;
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.summary-icon {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: #F7F1E8;
+    color: #C98F91;
+    font-size: 21px;
+}
+
+.filter-panel {
+    background: #FFFFFF;
+    border: 1px solid #EADDD5;
+    border-radius: 15px;
+    padding: 18px;
+}
+
+.form-control,
+.form-select {
+    border: 1px solid #EADDD5;
+    border-radius: 10px;
+    padding: 11px 13px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #C98F91;
+    box-shadow: 0 0 0 0.2rem rgba(201, 143, 145, 0.15);
+}
+
+.subject-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.subject-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(73, 53, 46, 0.08);
+}
+
+.subject-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F7F1E8;
+    color: #C98F91;
+    border-radius: 13px;
+    font-size: 22px;
+}
+
+.subject-title {
+    color: #49352E;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.subject-code {
+    color: #A18B7B;
+    font-size: 13px;
+}
+
+.subject-tag {
+    display: inline-block;
+    background: #F7F1E8;
+    color: #49352E;
+    padding: 5px 11px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.subject-detail {
+    color: #78675D;
+    font-size: 14px;
+    margin-bottom: 9px;
+}
+
+.subject-detail i {
+    color: #C98F91;
+    margin-right: 7px;
+}
+
+.student-count {
+    border-top: 1px solid #EADDD5;
+    padding-top: 14px;
+    margin-top: 14px;
+    color: #49352E;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.empty-state {
+    display: none;
+    text-align: center;
+    padding: 35px 15px;
+    color: #A18B7B;
+}
+
+.empty-state i {
+    font-size: 35px;
+    color: #C98F91;
+}
+
+@media (max-width: 576px) {
+    .page-heading {
+        font-size: 24px;
+    }
+}

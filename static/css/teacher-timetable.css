@@ -1,0 +1,186 @@
+
+/* ==============================
+   PAGE LAYOUT
+============================== */
+
+.page-wrapper {
+    padding: 30px;
+    background: #F7F1E8;
+    min-height: 85vh;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.page-header h2 {
+    color: #49352E;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.page-header p {
+    color: #806F65;
+    margin: 0;
+}
+
+.back-link {
+    color: #49352E;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.back-link:hover {
+    color: #C98F91;
+}
+
+/* ==============================
+   SUMMARY CARDS
+============================== */
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.summary-card,
+.content-card {
+    background: #FFFAF5;
+    border: 1px solid #EADDD5;
+    border-radius: 15px;
+    padding: 22px;
+}
+
+.summary-card h6 {
+    color: #806F65;
+    margin-bottom: 12px;
+}
+
+.summary-card h3 {
+    color: #49352E;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* ==============================
+   CONTENT SECTION
+============================== */
+
+.content-card {
+    margin-bottom: 22px;
+}
+
+.content-card h5 {
+    color: #49352E;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+/* ==============================
+   WEEKLY TIMETABLE
+============================== */
+
+.table-responsive {
+    border-radius: 10px;
+}
+
+.timetable-table {
+    min-width: 850px;
+    margin-bottom: 0;
+}
+
+.timetable-table th {
+    background: #EADDD5 !important;
+    color: #49352E !important;
+    font-size: 13px;
+    text-align: center;
+    white-space: nowrap;
+    padding: 13px;
+}
+
+.timetable-table td {
+    color: #65544B;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 13px;
+    min-width: 115px;
+    height: 75px;
+}
+
+.class-box {
+    background: #EADDD5;
+    border-radius: 8px;
+    padding: 8px;
+    color: #49352E;
+}
+
+.class-box strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.class-box small {
+    display: block;
+    color: #806F65;
+}
+
+.break-box {
+    background: #F7F1E8;
+    color: #806F65;
+    font-weight: 600;
+}
+
+/* ==============================
+   INFORMATION NOTICE
+============================== */
+
+.notice {
+    background: #EADDD5;
+    color: #65544B;
+    border-radius: 10px;
+    padding: 13px;
+    font-size: 13px;
+    margin-top: 18px;
+    line-height: 1.6;
+}
+
+.notice i {
+    margin-right: 5px;
+    color: #49352E;
+}
+
+/* ==============================
+   RESPONSIVE DESIGN
+============================== */
+
+@media (max-width: 768px) {
+    .page-wrapper {
+        padding: 18px;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .content-card {
+        padding: 17px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-header h2 {
+        font-size: 22px;
+    }
+
+    .page-wrapper {
+        padding: 14px;
+    }
+}
+

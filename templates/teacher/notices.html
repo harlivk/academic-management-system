@@ -1,0 +1,195 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Notice Board | Teacher Portal{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/teacher-notices.css' %}">
+{% endblock %}
+
+{% block navbar %}{% endblock %}
+
+{% block content %}
+<div class="page-container">
+
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">
+                <i class="bi bi-megaphone"></i> Notice Board
+            </h1>
+            <p class="page-subtitle">
+                Create and manage academic announcements.
+            </p>
+        </div>
+
+        <a href="{% url 'teacher_dashboard' %}" class="back-btn">
+            <i class="bi bi-arrow-left"></i> Back to Dashboard
+        </a>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="summary-grid">
+
+        <div class="summary-card">
+            <div class="summary-icon">
+                <i class="bi bi-megaphone"></i>
+            </div>
+            <h3>04</h3>
+            <p>Total Notices</p>
+        </div>
+
+        <div class="summary-card">
+            <div class="summary-icon">
+                <i class="bi bi-exclamation-circle"></i>
+            </div>
+            <h3>02</h3>
+            <p>Important Notices</p>
+        </div>
+
+        <div class="summary-card">
+            <div class="summary-icon">
+                <i class="bi bi-clock-history"></i>
+            </div>
+            <h3>03</h3>
+            <p>Recent Updates</p>
+        </div>
+
+    </div>
+
+    <!-- Notice List -->
+    <div class="content-card">
+
+        <div class="page-header">
+            <div>
+                <h2 class="content-heading mb-1">Published Notices</h2>
+                <p class="notice-meta mb-0">
+                    View and manage announcements.
+                </p>
+            </div>
+
+            <button class="create-btn" onclick="showCreateMessage()">
+                <i class="bi bi-plus-circle"></i> Create Notice
+            </button>
+        </div>
+
+        <div class="filter-row">
+            <input
+                type="text"
+                id="noticeSearch"
+                class="form-control"
+                placeholder="Search notices..."
+                oninput="filterNotices()"
+            >
+
+            <select
+                id="categoryFilter"
+                class="form-select"
+                onchange="filterNotices()"
+            >
+                <option value="all">All Categories</option>
+                <option value="academic">Academic</option>
+                <option value="examination">Examination</option>
+                <option value="events">Events</option>
+                <option value="general">General</option>
+            </select>
+        </div>
+
+        <div id="noticeList">
+
+            <div class="notice-item" data-category="academic">
+                <div class="notice-top">
+                    <div>
+                        <h5>Semester Academic Schedule</h5>
+                        <span class="category-badge">Academic</span>
+                        <span class="important-badge">Important</span>
+                    </div>
+                </div>
+
+                <p class="mt-3">
+                    Students and faculty members are requested to review
+                    the academic schedule for the current semester.
+                </p>
+
+                <div class="notice-meta">
+                    <i class="bi bi-calendar3"></i> Date: --/--/----
+                    &nbsp; | &nbsp; Published by: Teacher
+                </div>
+            </div>
+
+            <div class="notice-item" data-category="examination">
+                <div class="notice-top">
+                    <div>
+                        <h5>Internal Assessment Announcement</h5>
+                        <span class="category-badge">Examination</span>
+                        <span class="important-badge">Important</span>
+                    </div>
+                </div>
+
+                <p class="mt-3">
+                    Details regarding upcoming internal assessments
+                    will be shared with students through their respective sections.
+                </p>
+
+                <div class="notice-meta">
+                    <i class="bi bi-calendar3"></i> Date: --/--/----
+                    &nbsp; | &nbsp; Published by: Teacher
+                </div>
+            </div>
+
+            <div class="notice-item" data-category="events">
+                <div class="notice-top">
+                    <div>
+                        <h5>Upcoming College Events</h5>
+                        <span class="category-badge">Events</span>
+                    </div>
+                </div>
+
+                <p class="mt-3">
+                    Students are encouraged to participate in upcoming
+                    college activities and events.
+                </p>
+
+                <div class="notice-meta">
+                    <i class="bi bi-calendar3"></i> Date: --/--/----
+                    &nbsp; | &nbsp; Published by: Teacher
+                </div>
+            </div>
+
+            <div class="notice-item" data-category="general">
+                <div class="notice-top">
+                    <div>
+                        <h5>Important Student Guidelines</h5>
+                        <span class="category-badge">General</span>
+                    </div>
+                </div>
+
+                <p class="mt-3">
+                    Students should follow the college guidelines
+                    and regularly check the notice board for updates.
+                </p>
+
+                <div class="notice-meta">
+                    <i class="bi bi-calendar3"></i> Date: --/--/----
+                    &nbsp; | &nbsp; Published by: Teacher
+                </div>
+            </div>
+
+        </div>
+
+        <div id="emptyMessage" class="empty-message">
+            No notices found matching your search.
+        </div>
+
+    </div>
+
+    <p class="notice-meta text-center">
+        These are sample notices. Actual announcements will be loaded
+        from the database after backend integration.
+    </p>
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/teacher-notices.js' %}"></script>
+{% endblock %}

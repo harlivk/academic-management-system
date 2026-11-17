@@ -1,0 +1,120 @@
+.materials-page {
+    padding: 25px 0 45px;
+}
+
+.page-heading {
+    color: #49352E;
+    font-weight: 700;
+}
+
+.page-subtitle {
+    color: #A18B7B;
+}
+
+.summary-card {
+    background: #EADDD5;
+    border-radius: 15px;
+    padding: 22px;
+    height: 100%;
+}
+
+.summary-card h6 {
+    color: #806C60;
+    font-size: 13px;
+}
+
+.summary-card h3 {
+    color: #49352E;
+    font-weight: 700;
+    margin: 0;
+}
+
+.filter-select,
+.search-input {
+    border: 1px solid #EADDD5;
+    border-radius: 9px;
+    padding: 10px 14px;
+    color: #49352E;
+    background: white;
+}
+
+.material-card {
+    background: white;
+    border: 1px solid #EADDD5;
+    border-radius: 15px;
+    padding: 22px;
+    height: 100%;
+    transition: 0.2s;
+}
+
+.material-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(73, 53, 46, 0.08);
+}
+
+.material-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F7F1E8;
+    color: #C98F91;
+    border-radius: 12px;
+    font-size: 23px;
+    margin-bottom: 15px;
+}
+
+.material-card h5 {
+    color: #49352E;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.material-card p {
+    color: #A18B7B;
+    font-size: 13px;
+}
+
+.material-tag {
+    background: #EADDD5;
+    color: #49352E;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.download-btn {
+    display: inline-block;
+    background: #C98F91;
+    color: white;
+    text-decoration: none;
+    padding: 9px 15px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.download-btn:hover {
+    background: #A18B7B;
+    color: white;
+}
+
+.dashboard-link {
+    color: #A18B7B;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.dashboard-link:hover {
+    color: #49352E;
+}
+
+.empty-message {
+    display: none;
+    text-align: center;
+    padding: 30px;
+    color: #A18B7B;
+}

@@ -1,0 +1,122 @@
+
+.main-content {
+    padding: 0 !important;
+    min-height: 100vh;
+}
+
+.profile-page {
+    min-height: 100vh;
+    background: var(--milk);
+}
+
+.profile-topbar {
+    background: white;
+    padding: 18px 30px;
+    border-bottom: 1px solid var(--blush-oat);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-content {
+    max-width: 1050px;
+    margin: auto;
+    padding: 35px 25px;
+}
+
+.profile-heading {
+    color: var(--espresso);
+    font-weight: 700;
+}
+
+.profile-subtitle {
+    color: var(--cocoa-taupe);
+}
+
+.profile-card {
+    background: white;
+    border: 1px solid var(--blush-oat);
+    border-radius: 18px;
+    padding: 28px;
+    margin-top: 25px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid var(--blush-oat);
+}
+
+.profile-avatar {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background: var(--blush-oat);
+    color: var(--espresso);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+}
+
+.profile-name {
+    color: var(--espresso);
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.profile-role {
+    color: var(--cocoa-taupe);
+    font-size: 14px;
+}
+
+.profile-section-title {
+    color: var(--espresso);
+    font-weight: 700;
+    margin: 28px 0 18px;
+}
+
+.detail-box {
+    background: var(--milk);
+    border-radius: 12px;
+    padding: 16px;
+    height: 100%;
+}
+
+.detail-label {
+    color: var(--cocoa-taupe);
+    font-size: 12px;
+    margin-bottom: 7px;
+}
+
+.detail-value {
+    color: var(--espresso);
+    font-weight: 600;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.profile-status {
+    display: inline-block;
+    background: #e4f1e5;
+    color: #397348;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+@media (max-width: 600px) {
+    .profile-topbar {
+        padding: 15px;
+    }
+
+    .profile-content {
+        padding: 22px 15px;
+    }
+
+    .profile-card {
+        padding: 20px;
+    }
+}

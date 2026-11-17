@@ -1,0 +1,164 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}My Marks & Results | Academic Management System{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/student-marks.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container marks-page">
+
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+        <div>
+            <h2 class="page-heading">My Marks & Results</h2>
+            <p class="page-subtitle mb-0">
+                View your examination performance and subject-wise results.
+            </p>
+        </div>
+
+        <a href="/student/dashboard/" class="dashboard-link">
+            <i class="bi bi-arrow-left"></i> Back to Dashboard
+        </a>
+    </div>
+
+    <div class="row g-3">
+
+        <div class="col-md-3 col-sm-6">
+            <div class="summary-card">
+                <h6>Overall Percentage</h6>
+                <h3>{{ overall_percentage }}%</h3>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <div class="summary-card">
+                <h6>CGPA</h6>
+                <h3>--</h3>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <div class="summary-card">
+                <h6>Subjects</h6>
+                <h3>{{ subject_count }}</h3>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <div class="summary-card">
+                <h6>Result Status</h6>
+                <h3>{% if marks_records %}Available{% else %}Pending{% endif %}</h3>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="content-card">
+
+        <h5 class="section-title">
+            <i class="bi bi-journal-check me-2"></i>
+            Subject-wise Performance
+        </h5>
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle">
+
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Assessment</th>
+                        <th>Marks Obtained</th>
+                        <th>Maximum Marks</th>
+                        <th>Percentage</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for record in marks_records %}
+                    <tr>
+                        <td>{{ record.teaching_assignment.subject.name }}</td>
+                        <td>{{ record.assessment_name }}</td>
+                        <td>{{ record.marks_obtained }}</td>
+                        <td>{{ record.total_marks }}</td>
+                        <td>
+                            {% widthratio record.marks_obtained record.total_marks 100 %}%
+                        </td>
+                        <td>
+                            <span class="result-badge">Recorded</span>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6" class="text-center">
+                            No marks have been published yet.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <div class="content-card">
+
+        <h5 class="section-title">
+            <i class="bi bi-clock-history me-2"></i>
+            Examination History
+        </h5>
+
+        <div class="table-responsive">
+
+            <table class="table table-hover">
+
+                <thead>
+                    <tr>
+                        <th>Examination</th>
+                        <th>Academic Session</th>
+                        <th>Result</th>
+                        <th>Percentage</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for record in marks_records %}
+                    <tr>
+                        <td>{{ record.assessment_name }}</td>
+                        <td>{{ record.teaching_assignment.section.academic_year }}</td>
+                        <td>Recorded</td>
+                        <td>
+                            {% widthratio record.marks_obtained record.total_marks 100 %}%
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4" class="text-center">
+                            No examination records available.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <div class="notice">
+            <i class="bi bi-info-circle me-2"></i>
+            Overall percentage is calculated from your recorded marks.
+            CGPA will be available when the academic grading system is implemented.
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

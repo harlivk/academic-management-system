@@ -1,0 +1,230 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Assignments | Teacher Portal{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/teacher-assignments.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid py-4">
+
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+        <div>
+            <h2 class="page-heading">Assignments</h2>
+            <p class="page-subtitle mb-0">
+                Create and manage assignments for your assigned sections.
+            </p>
+        </div>
+
+        <a href="{% url 'teacher_create_assignment' %}"
+           class="btn btn-create"
+           id="createAssignmentBtn">
+           <i class="bi bi-plus-circle me-2"></i>
+            Create Assignment
+        </a>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="row g-3 mb-4">
+
+        <div class="col-md-3 col-sm-6">
+            <div class="summary-card">
+                <i class="bi bi-journal-text summary-icon"></i>
+                <div class="summary-number">{{ total_assignments|stringformat:"02d" }}</div>
+                <div class="summary-label">Total Assignments</div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <div class="summary-card">
+                <i class="bi bi-clock-history summary-icon"></i>
+                <div class="summary-number">{{ active_count|stringformat:"02d" }}</div>
+                <div class="summary-label">Active Assignments</div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <div class="summary-card">
+                <i class="bi bi-check-circle summary-icon"></i>
+                <div class="summary-number">{{ closed_count|stringformat:"02d" }}</div>
+                <div class="summary-label">Completed Assignments</div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+            <div class="summary-card">
+                <i class="bi bi-pencil-square summary-icon"></i>
+                <div class="summary-number">{{ draft_count|stringformat:"02d" }}</div>
+                <div class="summary-label">Draft Assignments</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Search and Filters -->
+    <div class="card border-0 shadow-sm rounded-4 p-3 mb-4">
+
+        <div class="row g-3 align-items-center">
+
+            <div class="col-lg-7">
+                <div class="input-group">
+                    <span class="input-group-text bg-white border-end-0">
+                        <i class="bi bi-search"></i>
+                    </span>
+                    <input
+                        type="text"
+                        id="searchAssignment"
+                        class="form-control custom-input border-start-0"
+                        placeholder="Search by assignment title or subject..."
+                    >
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <select id="statusFilter" class="form-select custom-input">
+                    <option value="all">All Statuses</option>
+                    <option value="active">Active</option>
+                    <option value="closed">Closed</option>
+                    <option value="draft">Draft</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Assignment List -->
+    <div class="mb-3">
+        <h5 class="section-heading">All Assignments</h5>
+        <p class="page-subtitle small mb-0">
+            View assignment details and submission deadlines.
+        </p>
+    </div>
+
+    <div class="row g-4" id="assignmentList">
+
+        {% for assignment in assignments %}
+
+        <div class="col-lg-6 assignment-item"
+             data-status="{{ assignment.status|lower }}">
+
+            <div class="assignment-card">
+
+                <div class="d-flex justify-content-between align-items-start mb-3">
+
+                    <div class="assignment-icon">
+                        <i class="bi bi-journal-text"></i>
+                    </div>
+
+                    <span class="status-badge status-{{ assignment.status|lower }}">
+                        {{ assignment.get_status_display }}
+                    </span>
+
+                </div>
+
+                <h5 class="assignment-title">{{ assignment.title }}</h5>
+
+                <p class="assignment-detail mb-3">
+                    {{ assignment.teaching_assignment.subject.name }}
+                    {% if assignment.teaching_assignment.subject.code %}
+                        · {{ assignment.teaching_assignment.subject.code }}
+                    {% endif %}
+                </p>
+
+                <hr style="border-color:#EADDD5;">
+
+                <div class="row g-3">
+
+                    <div class="col-6">
+                        <div class="assignment-detail">
+                            <i class="bi bi-people me-1"></i> Assigned Section
+                        </div>
+                        <strong>
+                            {{ assignment.teaching_assignment.section.course }}
+                            Section {{ assignment.teaching_assignment.section.section }}
+                        </strong>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="assignment-detail">
+                            <i class="bi bi-calendar-event me-1"></i> Due Date
+                        </div>
+                        <strong>
+                            {% if assignment.due_date %}
+                                {{ assignment.due_date|date:"d M Y" }}
+                            {% else %}
+                                Not Published
+                            {% endif %}
+                        </strong>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="assignment-detail">
+                            <i class="bi bi-file-earmark-text me-1"></i> Total Marks
+                        </div>
+                        <strong>{{ assignment.total_marks }} Marks</strong>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="assignment-detail">
+                            <i class="bi bi-upload me-1"></i> Submissions
+                        </div>
+
+                        <strong>{{ assignment.submission_count }}</strong>
+
+                        <div class="mt-2">
+                            <a href="{% url 'teacher_assignment_submissions' assignment.id %}"
+                               class="btn btn-create">
+                                <i class="bi bi-eye me-2"></i>
+                                View Submissions
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        {% empty %}
+
+        <div class="col-12">
+            <p class="page-subtitle">
+                No assignments have been created for your assigned sections yet.
+            </p>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="empty-message mt-3" id="emptyMessage">
+        <i class="bi bi-search fs-3"></i>
+        <p class="mb-0 mt-2">No assignments match your search.</p>
+    </div>
+
+    <!-- Back to Dashboard -->
+    <div class="mt-4">
+        <a href="{% url 'teacher_dashboard' %}"
+           class="btn btn-outline-secondary rounded-3">
+            <i class="bi bi-arrow-left me-2"></i>
+            Back to Dashboard
+        </a>
+    </div>
+
+    <div class="alert mt-4 rounded-3"
+         style="background:#F7F1E8; color:#806D62; border:none;">
+        <i class="bi bi-info-circle me-2"></i>
+        Assignment details and submission counts are fetched from the backend.
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/teacher-assignments.js' %}"></script>
+{% endblock %}

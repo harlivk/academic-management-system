@@ -1,0 +1,419 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Student Lists | Teacher Portal{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/teacher-students.css' %}">
+
+<style>
+    .page-wrapper { padding: 25px 0 45px; }
+    .page-heading { color: #49352E; font-weight: 700; }
+    .page-subtitle { color: #A18B7B; }
+    .back-link { color: #49352E; text-decoration: none; font-weight: 600; }
+    .back-link:hover { color: #C98F91; }
+
+    .summary-card, .table-panel {
+        background: #FFFFFF;
+        border: 1px solid #EADDD5;
+        border-radius: 16px;
+        padding: 22px;
+        height: 100%;
+        box-shadow: 0 4px 14px rgba(73, 53, 46, 0.04);
+    }
+
+    .summary-label { color: #A18B7B; font-size: 14px; }
+    .summary-value { color: #49352E; font-size: 27px; font-weight: 700; }
+
+    .summary-icon {
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        background: #F7F1E8;
+        color: #C98F91;
+        font-size: 21px;
+    }
+
+    .filter-panel {
+        background: #FFFFFF;
+        border: 1px solid #EADDD5;
+        border-radius: 15px;
+        padding: 18px;
+    }
+
+    .form-control, .form-select {
+        border: 1px solid #EADDD5;
+        border-radius: 10px;
+        padding: 11px 13px;
+    }
+
+    .form-control:focus, .form-select:focus {
+        border-color: #C98F91;
+        box-shadow: 0 0 0 0.2rem rgba(201, 143, 145, 0.15);
+    }
+
+    .table-panel { padding: 0; overflow: hidden; }
+    .table-heading { padding: 20px 22px; border-bottom: 1px solid #EADDD5; }
+    .table-heading h5 { color: #49352E; font-weight: 700; }
+
+    .table { margin-bottom: 0; min-width: 750px; }
+
+    .table thead th {
+        background: #F7F1E8;
+        color: #49352E;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 15px;
+        border-bottom: 1px solid #EADDD5;
+        white-space: nowrap;
+    }
+
+    .table tbody td {
+        color: #78675D;
+        padding: 15px;
+        vertical-align: middle;
+        font-size: 14px;
+    }
+
+    .student-name { color: #49352E; font-weight: 600; }
+
+    .student-avatar {
+        width: 36px;
+        height: 36px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: #EADDD5;
+        color: #49352E;
+        font-weight: 700;
+        margin-right: 9px;
+    }
+
+    .section-badge {
+        background: #F7F1E8;
+        color: #49352E;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .empty-state {
+        display: none;
+        text-align: center;
+        padding: 35px 15px;
+        color: #A18B7B;
+    }
+
+    .empty-state i { font-size: 35px; color: #C98F91; }
+
+    @media (max-width: 576px) {
+        .page-heading { font-size: 24px; }
+    }
+</style>
+{% endblock %}
+
+{% block navbar %}
+<nav class="navbar navbar-expand-lg" style="background:#F7F1E8;">
+    <div class="container">
+
+        <a class="navbar-brand fw-bold"
+           href="{% url 'teacher_dashboard' %}"
+           style="color:#49352E;">
+
+            <i class="bi bi-mortarboard-fill me-2"></i>
+            Academic Management System
+
+        </a>
+
+        <span class="badge rounded-pill"
+              style="background:#EADDD5;color:#49352E;">
+            Teacher Portal
+        </span>
+
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="container page-wrapper">
+
+    <!-- PAGE HEADER -->
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+
+        <div>
+            <h2 class="page-heading mb-1">Student Lists</h2>
+
+            <p class="page-subtitle mb-0">
+                View and search students across your assigned sections.
+            </p>
+        </div>
+
+        <a href="{% url 'teacher_dashboard' %}" class="back-link">
+            <i class="bi bi-arrow-left me-1"></i>
+            Back to Dashboard
+        </a>
+
+    </div>
+
+    <!-- SUMMARY CARDS -->
+    <div class="row g-3 mb-4">
+
+        <div class="col-md-4">
+            <div class="summary-card">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="summary-label">Total Students</div>
+                        <div class="summary-value">
+                            {{ total_students|default:"--" }}
+                        </div>
+                    </div>
+
+                    <div class="summary-icon">
+                        <i class="bi bi-people"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="summary-card">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="summary-label">Assigned Sections</div>
+                        <div class="summary-value">
+                            {{ total_sections|default:"--" }}
+                        </div>
+                    </div>
+
+                    <div class="summary-icon">
+                        <i class="bi bi-grid"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="summary-card">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="summary-label">Courses Covered</div>
+                        <div class="summary-value">
+                            {{ total_courses|default:"--" }}
+                        </div>
+                    </div>
+
+                    <div class="summary-icon">
+                        <i class="bi bi-mortarboard"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- SEARCH AND FILTERS -->
+    <div class="filter-panel mb-4">
+
+        <div class="row g-3">
+
+            <div class="col-md-5">
+
+                <label for="studentSearch"
+                       class="form-label fw-semibold"
+                       style="color:#49352E;">
+                    Search Students
+                </label>
+
+                <div class="input-group">
+
+                    <span class="input-group-text bg-white"
+                          style="border-color:#EADDD5;">
+                        <i class="bi bi-search" style="color:#C98F91;"></i>
+                    </span>
+
+                    <input
+                        type="text"
+                        id="studentSearch"
+                        class="form-control"
+                        placeholder="Name or enrollment number..."
+                    >
+
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+
+                <label for="courseFilter"
+                       class="form-label fw-semibold"
+                       style="color:#49352E;">
+                    Course
+                </label>
+
+                <select id="courseFilter" class="form-select">
+
+                    <option value="all">All Courses</option>
+                    <option value="btech">B.Tech</option>
+
+                </select>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <label for="sectionFilter"
+                       class="form-label fw-semibold"
+                       style="color:#49352E;">
+                    Section
+                </label>
+
+                <select id="sectionFilter" class="form-select">
+
+                    <option value="all">All Sections</option>
+
+                    {% for section in sections %}
+                        <option value="{{ section|slugify }}">
+                            {{ section }}
+                        </option>
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- STUDENT TABLE -->
+    <div class="table-panel">
+
+        <div class="table-heading d-flex justify-content-between align-items-center flex-wrap gap-2">
+
+            <div>
+                <h5 class="mb-1">Student Directory</h5>
+
+                <small style="color:#A18B7B;">
+                    Students from your assigned sections
+                </small>
+            </div>
+
+            <span class="section-badge" id="resultCount">
+                {{ total_students|default:0 }} Students
+            </span>
+
+        </div>
+
+        <div class="table-responsive">
+
+            <table class="table">
+
+                <thead>
+                    <tr>
+                        <th>Student</th>
+                        <th>Enrollment Number</th>
+                        <th>Course</th>
+                        <th>Section</th>
+                        <th>Semester</th>
+                        <th>Academic Year</th>
+                    </tr>
+                </thead>
+
+                <tbody id="studentTableBody">
+
+                    {% for student in assigned_students %}
+
+                    <tr class="student-row"
+                        data-course="{{ student.course|slugify }}"
+                        data-section="{{ student.section|slugify }}">
+
+                        <td>
+                            <span class="student-avatar">
+                                {{ student.name|first|upper }}
+                            </span>
+
+                            <span class="student-name">
+                                {{ student.name }}
+                            </span>
+                        </td>
+
+                        <td>{{ student.enrollment_number }}</td>
+
+                        <td>{{ student.course }}</td>
+
+                        <td>
+                            <span class="section-badge">
+                                {{ student.section }}
+                            </span>
+                        </td>
+
+                        <td>{{ student.semester }}</td>
+
+                        <td>{{ student.academic_year }}</td>
+
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+                        <td colspan="6" class="text-center py-4"
+                            style="color:#A18B7B;">
+                            No students have been assigned to your sections yet.
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <!-- FILTER EMPTY STATE -->
+        <div class="empty-state" id="emptyState">
+
+            <i class="bi bi-search"></i>
+
+            <h5 class="mt-3" style="color:#49352E;">
+                No students found
+            </h5>
+
+            <p class="mb-0">
+                Try changing your search or filters.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- INFORMATION NOTE -->
+    <div class="mt-4 p-3 rounded-3"
+         style="background:#F7F1E8;color:#78675D;">
+
+        <i class="bi bi-info-circle me-2" style="color:#C98F91;"></i>
+
+        <strong>Note:</strong>
+        Only students belonging to sections assigned to the logged-in
+        teacher should be displayed here.
+
+    </div>
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/teacher-students.js' %}"></script>
+{% endblock %}

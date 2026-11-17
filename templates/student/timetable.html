@@ -1,0 +1,152 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}My Timetable | Student Portal{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/student-timetable.css' %}">
+{% endblock %}
+
+{% block navbar %}{% endblock %}
+
+{% block content %}
+<div class="timetable-page">
+
+    <nav class="timetable-topbar">
+        <span class="fw-semibold" style="color: var(--espresso);">
+            <i class="bi bi-mortarboard-fill me-2"></i>
+            Student Workspace
+        </span>
+
+        <a href="{% url 'student_dashboard' %}" class="btn btn-sm btn-outline-secondary">
+            <i class="bi bi-arrow-left me-1"></i> Dashboard
+        </a>
+    </nav>
+
+    <div class="timetable-content">
+
+        <div>
+            <h2 class="page-heading">My Timetable</h2>
+            <p class="page-subtitle">
+                View your section-wise weekly lecture schedule and faculty details.
+            </p>
+        </div>
+
+        <!-- STUDENT ACADEMIC DETAILS -->
+        <div class="schedule-info">
+            <div class="row g-3">
+
+                <div class="col-md-4">
+                    <div class="info-label">Course</div>
+                    <div class="info-value">B.Tech</div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="info-label">Semester</div>
+                    <div class="info-value">To be assigned</div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="info-label">Section</div>
+                    <div class="info-value">To be assigned</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- WEEKLY TIMETABLE -->
+        <div class="timetable-card">
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+
+                <div>
+                    <h5 class="fw-bold mb-1" style="color: var(--espresso);">
+                        <i class="bi bi-calendar-week me-2"></i>
+                        My Section's Weekly Schedule
+                    </h5>
+
+                    <p class="page-subtitle mb-0">
+                        Only classes assigned to your section will appear here.
+                    </p>
+                </div>
+
+                <span class="badge rounded-pill"
+                      style="background: var(--blush-oat); color: var(--espresso);">
+                    Monday – Saturday
+                </span>
+
+            </div>
+
+            <div class="table-responsive">
+
+                <table class="table table-bordered custom-table">
+
+                    <thead>
+                        <tr>
+                            <th>Day / Time</th>
+                            <th>9:00 – 10:00</th>
+                            <th>10:00 – 11:00</th>
+                            <th>11:00 – 12:00</th>
+                            <th>12:00 – 1:00</th>
+                            <th>1:00 – 2:00</th>
+                            <th>2:00 – 3:00</th>
+                            <th>3:00 – 4:00</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td colspan="8" class="text-center py-5">
+                                <div class="empty-timetable">
+
+                                    <i class="bi bi-calendar-x"></i>
+
+                                    <h6>No timetable published yet.</h6>
+
+                                    <p>
+                                        Your section's weekly schedule will appear here
+                                        once the Admin/Timetable Coordinator publishes it.
+                                    </p>
+
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <!-- TIMETABLE LEGEND -->
+            <div class="legend">
+
+                <div class="legend-item">
+                    <span class="legend-dot"></span>
+                    Scheduled Class
+                </div>
+
+                <div class="legend-item">
+                    <i class="bi bi-cup-hot"></i>
+                    Lunch Break
+                </div>
+
+                <div class="legend-item">
+                    <i class="bi bi-arrow-repeat"></i>
+                    Approved Timetable Change
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- INFORMATION ABOUT CHANGES -->
+        <div class="timetable-notice">
+            <i class="bi bi-info-circle me-2"></i>
+            Your timetable is managed by the Admin/Timetable Coordinator.
+            Only officially published and approved timetable changes will be displayed here.
+        </div>
+
+    </div>
+</div>
+{% endblock %}
